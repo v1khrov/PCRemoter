@@ -35,9 +35,7 @@ namespace PCRemoter.Web
 		public PCRemoteMessages Echo(PCRemoteMessages _remoteMessage)
 		{
 			PCRemoteMessages _prm = new PCRemoteMessages();
-
 			_prm._message = _remoteMessage._message;
-
 			return _prm;
 		}
     }
