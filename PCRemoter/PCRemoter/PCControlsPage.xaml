@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="PCRemoter.PCControlsPage"
+	Title="Controls">
+	<ContentPage.Content>
+		<Grid x:Name="ControlsGrid">
+		<Grid.RowDefinitions>
+      		<RowDefinition Height="*" />
+      		<RowDefinition Height="*" />
+      		<RowDefinition Height="*" />
+      		<RowDefinition Height="*" />
+     		<RowDefinition Height="*" />
+      		<RowDefinition Height="1.5*" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="*" />
+   		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+      		<ColumnDefinition Width="*" />
+      		<ColumnDefinition Width="*" />
+      		<ColumnDefinition Width="*" />
+      		<ColumnDefinition Width="*" />
+    	</Grid.ColumnDefinitions>
+		<ContentView Padding="1" Grid.Row="0" Grid.ColumnSpan="4">
+			<Label x:Name="ipAddress" Text="{Binding ipAddress}" Grid.Column="0" FontSize="Large" XAlign="Center"/>
+		</ContentView>
+		<BoxView Color="Gray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="4"/>
+		<Button Text="Left Click" BackgroundColor="Silver" FontSize="Large" Grid.Row="5" Grid.Column="0" 
+			Grid.ColumnSpan="2" x:Name="leftClckBtn" Clicked="OnControlClicked"/>
+		<Button Text="Right Click" BackgroundColor="Silver" FontSize="Large" Grid.Row="5" Grid.Column="2" 
+			Grid.ColumnSpan="2" x:Name="rightClckBtn" Clicked="OnControlClicked"/>
+		<Button Text="Enter" BackgroundColor="Silver" FontSize="Large" Grid.Row="6" Grid.Column="0" 
+			Grid.ColumnSpan="2" x:Name="enterBtn" Clicked="OnControlClicked"/>
+		<Button Text="Window switch" BackgroundColor="Silver" FontSize="Medium" Grid.Row="6" Grid.Column="2" 
+			Grid.ColumnSpan="2" x:Name="switchBtn" Clicked="OnControlClicked"/>
+		<Button Text="Copy" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="0" 
+			x:Name="copyBtn" Clicked="OnControlClicked"/>
+		<Button Text="Paste" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="1" 
+			x:Name="pasteBtn" Clicked="OnControlClicked"/>
+		<Button Text="Delete" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="2" 
+			x:Name="delBtn" Clicked="OnControlClicked"/>
+		<Button Text="Select all" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="3" 
+			x:Name="selAllBtn" Clicked="OnControlClicked"/>
+		<Button Text="Up" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="0" 
+			x:Name="upBtn" Clicked="OnControlClicked"/>
+		<Button Text="Down" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="1" 
+			x:Name="downBtn" Clicked="OnControlClicked"/>
+		<Button Text="Left" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="2" 
+			x:Name="leftBtn" Clicked="OnControlClicked"/>
+		<Button Text="Right" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="3" 
+			x:Name="rightBtn" Clicked="OnControlClicked"/>
+		<Button Text="Settings" FontSize="Default" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="2" 
+			x:Name="settingsBtn" Clicked="OnSettingsButtonClicked"/>
+		
+		
+	</Grid>
+	</ContentPage.Content>
+</ContentPage>

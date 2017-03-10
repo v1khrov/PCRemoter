@@ -6,6 +6,10 @@ using System.Web.Services;
 
 namespace PCRemoter.Web
 {
+	public struct PCRemoteMessages
+	{
+		public string _message;
+	}
     /// <summary>
     /// Summary description for PCRemoterService
     /// </summary>
@@ -14,6 +18,9 @@ namespace PCRemoter.Web
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     // [System.Web.Script.Services.ScriptService]
+
+
+
     public class PCRemoterService : System.Web.Services.WebService
     {
 
@@ -22,5 +29,17 @@ namespace PCRemoter.Web
         {
             return "Hello World";
         }
+
+
+		[WebMethod]
+		public PCRemoteMessages Echo(PCRemoteMessages _remoteMessage)
+		{
+			PCRemoteMessages _prm = new PCRemoteMessages();
+
+			_prm._message = _remoteMessage._message;
+
+			return _prm;
+		}
     }
+
 }

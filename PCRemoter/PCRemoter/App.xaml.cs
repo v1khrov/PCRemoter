@@ -13,7 +13,7 @@ namespace PCRemoter
         {
             InitializeComponent();
 
-            MainPage = new PCRemoter.MainPage();
+			MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
