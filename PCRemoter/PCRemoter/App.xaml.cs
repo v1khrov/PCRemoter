@@ -1,9 +1,11 @@
-﻿using System;
+﻿using PCRemoter.PCRemoterServer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+
 
 namespace PCRemoter
 {
@@ -11,8 +13,7 @@ namespace PCRemoter
     {
         public App()
         {
-            InitializeComponent();
-
+            InitializeComponent();            
 			MainPage = new NavigationPage(new MainPage());
         }
 

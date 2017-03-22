@@ -19,5 +19,11 @@ namespace PCRemoter.Server
 
         [OperationContract]
         string Echo(string _message);
+
+        [OperationContract]
+        string TestConnection();
+
+        [OperationContract]
+        string Control(string _buttonName);
     }
 }

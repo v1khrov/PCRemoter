@@ -25,7 +25,7 @@
       		<ColumnDefinition Width="*" />
     	</Grid.ColumnDefinitions>
 		<ContentView Padding="1" Grid.Row="0" Grid.ColumnSpan="4">
-			<Label x:Name="ipAddress" Text="{Binding ipAddress}" Grid.Column="0" FontSize="Large" XAlign="Center"/>
+			<Label x:Name="ipAddress" Text="NULL" Grid.Column="0" FontSize="Large" XAlign="Center"/>
 		</ContentView>
 		<BoxView Color="Gray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="4"/>
 		<Button Text="Left Click" BackgroundColor="Silver" FontSize="Large" Grid.Row="5" Grid.Column="0" 

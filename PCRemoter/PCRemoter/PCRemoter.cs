@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace PCRemoter
 {
-    public class PCRemoter
+    public class PCRemoterConnect
     {
         string _ipAddress = "localhost:5051";
 
@@ -14,8 +14,8 @@ namespace PCRemoter
             get { return _ipAddress; }
         }
 
-        internal class App : Application
-        {
-        }
+        
+
+        
     }
 }

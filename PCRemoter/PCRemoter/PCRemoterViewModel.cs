@@ -12,7 +12,7 @@ namespace PCRemoter
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        PCRemoter _pcr = new PCRemoter();
+        PCRemoterConnect _pcr = new PCRemoterConnect();
 
         public PCRemoterViewModel()
         {

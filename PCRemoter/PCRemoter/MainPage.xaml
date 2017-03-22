@@ -24,13 +24,19 @@
 			<TableView.Root>
 				<TableRoot>
 					<TableSection Title="Start connecting">
-						<EntryCell Label="PC Address" x:Name="labelPCAddress" Text="{Binding ipAddress}" Keyboard="Url"/>
+                        <EntryCell Label="PC Address" LabelColor="Gray" x:Name="labelPCAddress" Text="http://192.168.0.95:5051/RemoterService" Keyboard="Url"/>
 						<SwitchCell Text="Save" />
 						<ViewCell>
 							<Button Text="Connect" FontSize="Large" x:Name="buttonConnect" HorizontalOptions="CenterAndExpand" Clicked="OnButtonConnectClicked"/>
 						</ViewCell>
-						<EntryCell Label="Your test message" x:Name="labelMessage" Text="" Keyboard="Default"/>
-						<EntryCell Label="Answer" x:Name="labelAnswer" Text="" Keyboard="Default"/>
+                        <ViewCell>
+                            <Button Text="Open controls" FontSize="Default" x:Name="buttonOpenCtrls" HorizontalOptions="CenterAndExpand" Clicked="OnButtonOpenCtrlsClicked"/>
+                        </ViewCell>
+                        <ViewCell>
+                            <Label x:Name="labelConnectMsg" FontSize="Default" HorizontalOptions="CenterAndExpand" Text="Enter IP address and tap Connect" />
+                        </ViewCell>
+                        <EntryCell Label="Your test message" LabelColor="Gray" x:Name="labelMessage" Text="" Keyboard="Default"/>
+                        <EntryCell Label="Answer" LabelColor="Gray" x:Name="labelAnswer" Text="" Keyboard="Default"/>
 						<ViewCell>
 							<Button Text="Echo test" FontSize="Large" x:Name="buttonEcho" HorizontalOptions="CenterAndExpand" Clicked="OnButtonEchoClicked"/>
 						</ViewCell>
