@@ -21,7 +21,7 @@ namespace PCRemoter
 			BindingContext = _prvm;
         }
 
-		private async void OnButtonConnectClicked(object sender, EventArgs e)
+		private void OnButtonConnectClicked(object sender, EventArgs e)
 		{           
             connectIPAddress = labelPCAddress.Text;
             client = new RemoterServiceClient(0, connectIPAddress);
@@ -31,9 +31,9 @@ namespace PCRemoter
                 //проверка соединения
                 labelConnectMsg.Text = "Connecting to service...";
 
-                client.TestConnectionAsync();
-                client.TestConnectionCompleted += new EventHandler<TestConnectionCompletedEventArgs>(TestConnectionCallback);
                 
+                client.TestConnectionCompleted += new EventHandler<TestConnectionCompletedEventArgs>(TestConnectionCallback);
+                client.TestConnectionAsync();
 
                 if (!string.Equals(testAnswer, "OK", StringComparison.CurrentCultureIgnoreCase))
                 {
@@ -45,10 +45,8 @@ namespace PCRemoter
             catch (Exception ex)
             {
                 labelConnectMsg.Text = "Connecting failed! " + ex.Message;
-                await DisplayAlert("Error!", "Connecting failed! " + ex.Message, "ОK");
-            }
-
-               // await Navigation.PushAsync(new PCControlsPage());
+                DisplayAlert("Error!", "Connecting failed! " + ex.Message, "ОK");
+            }               
 
 		}
 

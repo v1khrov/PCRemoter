@@ -13,7 +13,7 @@ namespace PCRemoter.Server
     {
         public string Control(string _buttonName)
         {
-            Console.WriteLine("Вызов метода \"Control\"");
+            Console.WriteLine("Вызов метода \"Control\"");         
                         
             return "OK";
         }
