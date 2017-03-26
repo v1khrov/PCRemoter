@@ -22,22 +22,16 @@ namespace PCRemoter
         }
 
 		private void OnButtonConnectClicked(object sender, EventArgs e)
-		{           
-            connectIPAddress = labelPCAddress.Text;
-            client = new RemoterServiceClient(0, connectIPAddress);
+		{
+
+            TestConnection();
 
             try
             {
-                //проверка соединения
-                labelConnectMsg.Text = "Connecting to service...";
-
-                
-                client.TestConnectionCompleted += new EventHandler<TestConnectionCompletedEventArgs>(TestConnectionCallback);
-                client.TestConnectionAsync();
 
                 if (!string.Equals(testAnswer, "OK", StringComparison.CurrentCultureIgnoreCase))
                 {
-                    throw new Exception("Host not found!");                   
+                    throw new Exception("Host not found!");
 
                 }
                 labelConnectMsg.Text = "Connecting successed!";
@@ -46,9 +40,20 @@ namespace PCRemoter
             {
                 labelConnectMsg.Text = "Connecting failed! " + ex.Message;
                 DisplayAlert("Error!", "Connecting failed! " + ex.Message, "ОK");
-            }               
+            }
 
-		}
+        }
+
+        void TestConnection()
+        {
+            connectIPAddress = labelPCAddress.Text;
+            client = new RemoterServiceClient(0, connectIPAddress);
+
+            //проверка соединения
+            labelConnectMsg.Text = "Connecting to service...";
+            client.TestConnectionCompleted += new EventHandler<TestConnectionCompletedEventArgs>(TestConnectionCallback);
+            client.TestConnectionAsync();
+        }
 
         private async void OnButtonOpenCtrlsClicked (object sender, EventArgs e)
         {
@@ -77,6 +82,7 @@ namespace PCRemoter
         static void TestConnectionCallback(object sender, TestConnectionCompletedEventArgs e)
         {
             testAnswer = e.Result;
+            
         }
 
         static void  EchoCallback(object sender, EchoCompletedEventArgs e)
