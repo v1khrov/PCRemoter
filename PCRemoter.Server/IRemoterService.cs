@@ -24,6 +24,6 @@ namespace PCRemoter.Server
         string TestConnection();
 
         [OperationContract]
-        string Control(string _buttonName);
+        string Controls(string _buttonName);
     }
 }

@@ -38,11 +38,11 @@
   <wsdl:message name="IRemoterService_TestConnection_OutputMessage">
     <wsdl:part name="parameters" element="tns:TestConnectionResponse" />
   </wsdl:message>
-  <wsdl:message name="IRemoterService_Control_InputMessage">
-    <wsdl:part name="parameters" element="tns:Control" />
+  <wsdl:message name="IRemoterService_Controls_InputMessage">
+    <wsdl:part name="parameters" element="tns:Controls" />
   </wsdl:message>
-  <wsdl:message name="IRemoterService_Control_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ControlResponse" />
+  <wsdl:message name="IRemoterService_Controls_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ControlsResponse" />
   </wsdl:message>
   <wsdl:portType name="IRemoterService">
     <wsdl:operation name="DoWork">
@@ -61,9 +61,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRemoterService/TestConnection" message="tns:IRemoterService_TestConnection_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRemoterService/TestConnectionResponse" message="tns:IRemoterService_TestConnection_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Control">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRemoterService/Control" message="tns:IRemoterService_Control_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRemoterService/ControlResponse" message="tns:IRemoterService_Control_OutputMessage" />
+    <wsdl:operation name="Controls">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRemoterService/Controls" message="tns:IRemoterService_Controls_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRemoterService/ControlsResponse" message="tns:IRemoterService_Controls_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetHttpBinding_IRemoterService" type="tns:IRemoterService">
@@ -105,8 +105,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Control">
-      <soap12:operation soapAction="http://tempuri.org/IRemoterService/Control" style="document" />
+    <wsdl:operation name="Controls">
+      <soap12:operation soapAction="http://tempuri.org/IRemoterService/Controls" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

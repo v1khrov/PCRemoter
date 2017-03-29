@@ -43,12 +43,18 @@ namespace PCRemoter
 
             if (sender == rightBtn)
                 _buttonName = "buttonRight";
+
+            if (sender == rightClckBtn)
+                _buttonName = "clickRight";
+
+            if (sender == leftClckBtn)
+                _buttonName = "clickLeft"; 
             
 
             try
             {
-                controlsClient.ControlAsync(_buttonName);
-                controlsClient.ControlCompleted += new EventHandler<ControlCompletedEventArgs>(ControlCallback);
+                controlsClient.ControlsAsync(_buttonName);
+                controlsClient.ControlsCompleted += new EventHandler<ControlsCompletedEventArgs>(ControlsCallback);
 
                 if(controlAnswer=="")
                 {
@@ -65,7 +71,7 @@ namespace PCRemoter
                
         }
 
-        static void ControlCallback(object sender, ControlCompletedEventArgs e)
+        static void ControlsCallback(object sender, ControlsCompletedEventArgs e)
         {
             controlAnswer = e.Result;
         }

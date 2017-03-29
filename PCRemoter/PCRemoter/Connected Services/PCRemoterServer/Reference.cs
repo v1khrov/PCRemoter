@@ -35,10 +35,10 @@ namespace PCRemoter.PCRemoterServer {
         
         string EndTestConnection(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IRemoterService/Control", ReplyAction="http://tempuri.org/IRemoterService/ControlResponse")]
-        System.IAsyncResult BeginControl(string _buttonName, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IRemoterService/Controls", ReplyAction="http://tempuri.org/IRemoterService/ControlsResponse")]
+        System.IAsyncResult BeginControls(string _buttonName, System.AsyncCallback callback, object asyncState);
         
-        string EndControl(System.IAsyncResult result);
+        string EndControls(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -104,11 +104,11 @@ namespace PCRemoter.PCRemoterServer {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ControlCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class ControlsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public ControlCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public ControlsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -149,11 +149,11 @@ namespace PCRemoter.PCRemoterServer {
         
         private System.Threading.SendOrPostCallback onTestConnectionCompletedDelegate;
         
-        private BeginOperationDelegate onBeginControlDelegate;
+        private BeginOperationDelegate onBeginControlsDelegate;
         
-        private EndOperationDelegate onEndControlDelegate;
+        private EndOperationDelegate onEndControlsDelegate;
         
-        private System.Threading.SendOrPostCallback onControlCompletedDelegate;
+        private System.Threading.SendOrPostCallback onControlsCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -217,7 +217,7 @@ namespace PCRemoter.PCRemoterServer {
         
         public event System.EventHandler<TestConnectionCompletedEventArgs> TestConnectionCompleted;
         
-        public event System.EventHandler<ControlCompletedEventArgs> ControlCompleted;
+        public event System.EventHandler<ControlsCompletedEventArgs> ControlsCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -401,49 +401,49 @@ namespace PCRemoter.PCRemoterServer {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult PCRemoter.PCRemoterServer.IRemoterService.BeginControl(string _buttonName, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginControl(_buttonName, callback, asyncState);
+        System.IAsyncResult PCRemoter.PCRemoterServer.IRemoterService.BeginControls(string _buttonName, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginControls(_buttonName, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        string PCRemoter.PCRemoterServer.IRemoterService.EndControl(System.IAsyncResult result) {
-            return base.Channel.EndControl(result);
+        string PCRemoter.PCRemoterServer.IRemoterService.EndControls(System.IAsyncResult result) {
+            return base.Channel.EndControls(result);
         }
         
-        private System.IAsyncResult OnBeginControl(object[] inValues, System.AsyncCallback callback, object asyncState) {
+        private System.IAsyncResult OnBeginControls(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string _buttonName = ((string)(inValues[0]));
-            return ((PCRemoter.PCRemoterServer.IRemoterService)(this)).BeginControl(_buttonName, callback, asyncState);
+            return ((PCRemoter.PCRemoterServer.IRemoterService)(this)).BeginControls(_buttonName, callback, asyncState);
         }
         
-        private object[] OnEndControl(System.IAsyncResult result) {
-            string retVal = ((PCRemoter.PCRemoterServer.IRemoterService)(this)).EndControl(result);
+        private object[] OnEndControls(System.IAsyncResult result) {
+            string retVal = ((PCRemoter.PCRemoterServer.IRemoterService)(this)).EndControls(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnControlCompleted(object state) {
-            if ((this.ControlCompleted != null)) {
+        private void OnControlsCompleted(object state) {
+            if ((this.ControlsCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.ControlCompleted(this, new ControlCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.ControlsCompleted(this, new ControlsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void ControlAsync(string _buttonName) {
-            this.ControlAsync(_buttonName, null);
+        public void ControlsAsync(string _buttonName) {
+            this.ControlsAsync(_buttonName, null);
         }
         
-        public void ControlAsync(string _buttonName, object userState) {
-            if ((this.onBeginControlDelegate == null)) {
-                this.onBeginControlDelegate = new BeginOperationDelegate(this.OnBeginControl);
+        public void ControlsAsync(string _buttonName, object userState) {
+            if ((this.onBeginControlsDelegate == null)) {
+                this.onBeginControlsDelegate = new BeginOperationDelegate(this.OnBeginControls);
             }
-            if ((this.onEndControlDelegate == null)) {
-                this.onEndControlDelegate = new EndOperationDelegate(this.OnEndControl);
+            if ((this.onEndControlsDelegate == null)) {
+                this.onEndControlsDelegate = new EndOperationDelegate(this.OnEndControls);
             }
-            if ((this.onControlCompletedDelegate == null)) {
-                this.onControlCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnControlCompleted);
+            if ((this.onControlsCompletedDelegate == null)) {
+                this.onControlsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnControlsCompleted);
             }
-            base.InvokeAsync(this.onBeginControlDelegate, new object[] {
-                        _buttonName}, this.onEndControlDelegate, this.onControlCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginControlsDelegate, new object[] {
+                        _buttonName}, this.onEndControlsDelegate, this.onControlsCompletedDelegate, userState);
         }
         
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -598,16 +598,16 @@ namespace PCRemoter.PCRemoterServer {
                 return _result;
             }
             
-            public System.IAsyncResult BeginControl(string _buttonName, System.AsyncCallback callback, object asyncState) {
+            public System.IAsyncResult BeginControls(string _buttonName, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[1];
                 _args[0] = _buttonName;
-                System.IAsyncResult _result = base.BeginInvoke("Control", _args, callback, asyncState);
+                System.IAsyncResult _result = base.BeginInvoke("Controls", _args, callback, asyncState);
                 return _result;
             }
             
-            public string EndControl(System.IAsyncResult result) {
+            public string EndControls(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                string _result = ((string)(base.EndInvoke("Control", _args, result)));
+                string _result = ((string)(base.EndInvoke("Controls", _args, result)));
                 return _result;
             }
         }

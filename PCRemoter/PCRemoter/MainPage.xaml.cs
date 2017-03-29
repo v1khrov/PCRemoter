@@ -24,36 +24,39 @@ namespace PCRemoter
 		private void OnButtonConnectClicked(object sender, EventArgs e)
 		{
 
-            TestConnection();
-
-            try
+            Device.BeginInvokeOnMainThread(() =>
             {
+                connectIPAddress = labelPCAddress.Text;
+                client = new RemoterServiceClient(0, connectIPAddress);
 
-                if (!string.Equals(testAnswer, "OK", StringComparison.CurrentCultureIgnoreCase))
+                //проверка соединения
+                labelConnectMsg.Text = "Connecting to service...";
+                client.TestConnectionCompleted += new EventHandler<TestConnectionCompletedEventArgs>(TestConnectionCallback);
+                client.TestConnectionAsync();                
+
+                try
                 {
-                    throw new Exception("Host not found!");
 
+                    if (!string.Equals(testAnswer, "OK", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        throw new Exception("Host not found!");
+
+                    }
+                    labelConnectMsg.Text = "Connecting successed!";
                 }
-                labelConnectMsg.Text = "Connecting successed!";
-            }
-            catch (Exception ex)
-            {
-                labelConnectMsg.Text = "Connecting failed! " + ex.Message;
-                DisplayAlert("Error!", "Connecting failed! " + ex.Message, "ОK");
-            }
+                catch (Exception ex)
+                {
+                    labelConnectMsg.Text = "Connecting failed! " + ex.Message;
+                    DisplayAlert("Error!", "Connecting failed! " + ex.Message, "ОK");
+                }
+
+            });
+
+            
 
         }
 
-        void TestConnection()
-        {
-            connectIPAddress = labelPCAddress.Text;
-            client = new RemoterServiceClient(0, connectIPAddress);
-
-            //проверка соединения
-            labelConnectMsg.Text = "Connecting to service...";
-            client.TestConnectionCompleted += new EventHandler<TestConnectionCompletedEventArgs>(TestConnectionCallback);
-            client.TestConnectionAsync();
-        }
+       
 
         private async void OnButtonOpenCtrlsClicked (object sender, EventArgs e)
         {
@@ -80,8 +83,8 @@ namespace PCRemoter
 		}
 
         static void TestConnectionCallback(object sender, TestConnectionCompletedEventArgs e)
-        {
-            testAnswer = e.Result;
+        {            
+           testAnswer = e.Result;                      
             
         }
 

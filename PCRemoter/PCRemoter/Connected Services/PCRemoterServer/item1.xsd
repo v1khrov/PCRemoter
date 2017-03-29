@@ -48,17 +48,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Control">
+  <xs:element name="Controls">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="_buttonName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ControlResponse">
+  <xs:element name="ControlsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ControlResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ControlsResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
