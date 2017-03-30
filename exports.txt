@@ -1,0 +1,46 @@
+[DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern IntPtr GetFocus();
+        [DllImport("user32.dll")]
+        internal static extern uint GetWindowThreadProcessId(IntPtr hWnd, IntPtr ProcessId);
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        internal static extern bool GetGUIThreadInfo(uint idThread, out GuiThreadInfo lpgui);
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern IntPtr GetForegroundWindow();
+
+
+
+        public static IntPtr GetFocusedHandleFromProcessWithWindow(IntPtr window)
+        {
+            var threadId = GetWindowThreadProcessId(window, IntPtr.Zero);
+            var info = new GuiThreadInfo();
+            info.cbSize = (uint)Marshal.SizeOf(info);
+            bool thinf = GetGUIThreadInfo(0, out info);
+            int LastErr = Marshal.GetLastWin32Error();
+            if (!thinf)
+                throw new Win32Exception();
+
+            return info.hwndFocus;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct GuiThreadInfo
+        {
+            public uint cbSize;
+            public uint flags;
+            public IntPtr hwndActive;
+            public IntPtr hwndFocus;
+            public IntPtr hwndCapture;
+            public IntPtr hwndMenuOwner;
+            public IntPtr hwndMoveSize;
+            public IntPtr hwndCaret;
+            public Rect rcCaret;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct Rect
+        {
+            public uint Left;
+            public uint Top;
+            public uint Right;
+            public uint Bottom;
+        }

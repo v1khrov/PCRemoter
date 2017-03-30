@@ -11,6 +11,7 @@ namespace PCRemoter.Server
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RemoterService" in both code and config file together.
     public class RemoterService : IRemoterService
     {
+        
         public string Controls(string _buttonName)
         {
             Console.WriteLine("Вызов метода \"Control\"");
@@ -22,14 +23,15 @@ namespace PCRemoter.Server
                     //_ctrl.OnMouseClick(_mouseEA);
                     break;
                 case "buttonDown":
-                    SendKeys.Send("{DOWN}");
+                    //SendKeys.Send("{DOWN}");
+                    //IntPtr _wHandle = NativeMethods.GetActiveWindow();
+                    //string _wTitle = NativeMethods.GetActiveWindowTitle();
+                    IntPtr _wHandle = NativeMethods.FindWindow("PPTFrameClass", null);
+                    NativeMethods.KeyPress(_wHandle, Keys.Down, false);
                     break;
 
-            }
-            
-            
-
-                        
+            }             
+               
             return "OK";
         }
 
