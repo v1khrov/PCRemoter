@@ -44,6 +44,12 @@
   <wsdl:message name="IRemoterService_Controls_OutputMessage">
     <wsdl:part name="parameters" element="tns:ControlsResponse" />
   </wsdl:message>
+  <wsdl:message name="IRemoterService_SendTextToWindow_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendTextToWindow" />
+  </wsdl:message>
+  <wsdl:message name="IRemoterService_SendTextToWindow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendTextToWindowResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRemoterService">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IRemoterService/DoWork" message="tns:IRemoterService_DoWork_InputMessage" />
@@ -64,6 +70,10 @@
     <wsdl:operation name="Controls">
       <wsdl:input wsaw:Action="http://tempuri.org/IRemoterService/Controls" message="tns:IRemoterService_Controls_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRemoterService/ControlsResponse" message="tns:IRemoterService_Controls_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendTextToWindow">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRemoterService/SendTextToWindow" message="tns:IRemoterService_SendTextToWindow_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRemoterService/SendTextToWindowResponse" message="tns:IRemoterService_SendTextToWindow_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetHttpBinding_IRemoterService" type="tns:IRemoterService">
@@ -107,6 +117,15 @@
     </wsdl:operation>
     <wsdl:operation name="Controls">
       <soap12:operation soapAction="http://tempuri.org/IRemoterService/Controls" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextToWindow">
+      <soap12:operation soapAction="http://tempuri.org/IRemoterService/SendTextToWindow" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

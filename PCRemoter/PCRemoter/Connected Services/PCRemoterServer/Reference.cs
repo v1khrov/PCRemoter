@@ -39,6 +39,11 @@ namespace PCRemoter.PCRemoterServer {
         System.IAsyncResult BeginControls(string _buttonName, System.AsyncCallback callback, object asyncState);
         
         string EndControls(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IRemoterService/SendTextToWindow", ReplyAction="http://tempuri.org/IRemoterService/SendTextToWindowResponse")]
+        System.IAsyncResult BeginSendTextToWindow(string _text, System.AsyncCallback callback, object asyncState);
+        
+        string EndSendTextToWindow(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -123,6 +128,25 @@ namespace PCRemoter.PCRemoterServer {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class SendTextToWindowCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public SendTextToWindowCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class RemoterServiceClient : System.ServiceModel.ClientBase<PCRemoter.PCRemoterServer.IRemoterService>, PCRemoter.PCRemoterServer.IRemoterService {
         
         private BeginOperationDelegate onBeginDoWorkDelegate;
@@ -154,6 +178,12 @@ namespace PCRemoter.PCRemoterServer {
         private EndOperationDelegate onEndControlsDelegate;
         
         private System.Threading.SendOrPostCallback onControlsCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginSendTextToWindowDelegate;
+        
+        private EndOperationDelegate onEndSendTextToWindowDelegate;
+        
+        private System.Threading.SendOrPostCallback onSendTextToWindowCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -218,6 +248,8 @@ namespace PCRemoter.PCRemoterServer {
         public event System.EventHandler<TestConnectionCompletedEventArgs> TestConnectionCompleted;
         
         public event System.EventHandler<ControlsCompletedEventArgs> ControlsCompleted;
+        
+        public event System.EventHandler<SendTextToWindowCompletedEventArgs> SendTextToWindowCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -446,6 +478,52 @@ namespace PCRemoter.PCRemoterServer {
                         _buttonName}, this.onEndControlsDelegate, this.onControlsCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult PCRemoter.PCRemoterServer.IRemoterService.BeginSendTextToWindow(string _text, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSendTextToWindow(_text, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string PCRemoter.PCRemoterServer.IRemoterService.EndSendTextToWindow(System.IAsyncResult result) {
+            return base.Channel.EndSendTextToWindow(result);
+        }
+        
+        private System.IAsyncResult OnBeginSendTextToWindow(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string _text = ((string)(inValues[0]));
+            return ((PCRemoter.PCRemoterServer.IRemoterService)(this)).BeginSendTextToWindow(_text, callback, asyncState);
+        }
+        
+        private object[] OnEndSendTextToWindow(System.IAsyncResult result) {
+            string retVal = ((PCRemoter.PCRemoterServer.IRemoterService)(this)).EndSendTextToWindow(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnSendTextToWindowCompleted(object state) {
+            if ((this.SendTextToWindowCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.SendTextToWindowCompleted(this, new SendTextToWindowCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void SendTextToWindowAsync(string _text) {
+            this.SendTextToWindowAsync(_text, null);
+        }
+        
+        public void SendTextToWindowAsync(string _text, object userState) {
+            if ((this.onBeginSendTextToWindowDelegate == null)) {
+                this.onBeginSendTextToWindowDelegate = new BeginOperationDelegate(this.OnBeginSendTextToWindow);
+            }
+            if ((this.onEndSendTextToWindowDelegate == null)) {
+                this.onEndSendTextToWindowDelegate = new EndOperationDelegate(this.OnEndSendTextToWindow);
+            }
+            if ((this.onSendTextToWindowCompletedDelegate == null)) {
+                this.onSendTextToWindowCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSendTextToWindowCompleted);
+            }
+            base.InvokeAsync(this.onBeginSendTextToWindowDelegate, new object[] {
+                        _text}, this.onEndSendTextToWindowDelegate, this.onSendTextToWindowCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -608,6 +686,19 @@ namespace PCRemoter.PCRemoterServer {
             public string EndControls(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 string _result = ((string)(base.EndInvoke("Controls", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginSendTextToWindow(string _text, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = _text;
+                System.IAsyncResult _result = base.BeginInvoke("SendTextToWindow", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndSendTextToWindow(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("SendTextToWindow", _args, result)));
                 return _result;
             }
         }

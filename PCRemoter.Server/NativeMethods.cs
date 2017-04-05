@@ -32,6 +32,10 @@ namespace PCRemoter.Server
         string lpWindowName // window name 
         );
 
+        // Activate an application window.
+        [DllImport("USER32.DLL")]
+        public static extern bool SetForegroundWindow(IntPtr hWnd);
+
         //получение имени активного окна
         [DllImport("user32.dll")]
         public static extern IntPtr GetActiveWindow();
@@ -85,6 +89,13 @@ namespace PCRemoter.Server
             int WM_KEY = up ? 0x0101 /* WM_KEYUP */ : 0x0100 /* WM_KEYDOWN */;
 
             return SendMessage(hWnd, WM_KEY, (int)keys, 1);
+        }
+
+        public static int KeyPressInt(IntPtr hWnd, int key, bool up)
+        {
+            int WM_KEY = up ? 0x0101 /* WM_KEYUP */ : 0x0100 /* WM_KEYDOWN */;
+
+            return SendMessage(hWnd, WM_KEY, key, 1);
         }
     
 }

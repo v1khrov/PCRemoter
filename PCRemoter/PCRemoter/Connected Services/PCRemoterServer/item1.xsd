@@ -62,4 +62,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SendTextToWindow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="_text" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendTextToWindowResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendTextToWindowResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

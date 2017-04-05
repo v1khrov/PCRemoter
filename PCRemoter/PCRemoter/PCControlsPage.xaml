@@ -25,25 +25,32 @@
       		<ColumnDefinition Width="*" />
     	</Grid.ColumnDefinitions>
 		<ContentView Padding="1" Grid.Row="0" Grid.ColumnSpan="4">
-			<Label x:Name="ipAddress" Text="NULL" Grid.Column="0" FontSize="Large" XAlign="Center"/>
-		</ContentView>
-		<BoxView Color="Gray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="4"/>
+                <Picker x:Name="pickerApps" SelectedIndexChanged="picker_SelectedIndexChanged">
+                    <Picker.Items>
+                        <x:String>MS PowerPoint</x:String>
+                        <x:String>Notepad</x:String>                        
+                    </Picker.Items>
+                </Picker>
+        </ContentView>
+            <Entry Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Placeholder="Enter text here..." x:Name="inputText" />
+            <Button Text="Send" Grid.Column="3" Grid.Row="1" x:Name="sendBtn" Clicked="OnSendTextClicked" />
+            <BoxView Color="Gray" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="3"/>
 		<Button Text="Left Click" BackgroundColor="Silver" FontSize="Large" Grid.Row="5" Grid.Column="0" 
 			Grid.ColumnSpan="2" x:Name="leftClckBtn" Clicked="OnControlClicked"/>
 		<Button Text="Right Click" BackgroundColor="Silver" FontSize="Large" Grid.Row="5" Grid.Column="2" 
 			Grid.ColumnSpan="2" x:Name="rightClckBtn" Clicked="OnControlClicked"/>
 		<Button Text="Enter" BackgroundColor="Silver" FontSize="Large" Grid.Row="6" Grid.Column="0" 
 			Grid.ColumnSpan="2" x:Name="enterBtn" Clicked="OnControlClicked"/>
-		<Button Text="Window switch" BackgroundColor="Silver" FontSize="Medium" Grid.Row="6" Grid.Column="2" 
-			Grid.ColumnSpan="2" x:Name="switchBtn" Clicked="OnControlClicked"/>
-		<Button Text="Copy" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="0" 
-			x:Name="copyBtn" Clicked="OnControlClicked"/>
-		<Button Text="Paste" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="1" 
+		<Button Text="F5" BackgroundColor="Silver" FontSize="Medium" Grid.Row="6" Grid.Column="2" 
+			Grid.ColumnSpan="2" x:Name="f5Btn" Clicked="OnControlClicked"/>
+		<Button Text="Esc" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="0" 
+			x:Name="escBtn" Clicked="OnControlClicked"/>
+		<Button Text="Null" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="1" 
 			x:Name="pasteBtn" Clicked="OnControlClicked"/>
 		<Button Text="Delete" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="2" 
 			x:Name="delBtn" Clicked="OnControlClicked"/>
-		<Button Text="Select all" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="3" 
-			x:Name="selAllBtn" Clicked="OnControlClicked"/>
+		<Button Text="Tab" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="3" 
+			x:Name="tabBtn" Clicked="OnControlClicked"/>
 		<Button Text="Up" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="0" 
 			x:Name="upBtn" Clicked="OnControlClicked"/>
 		<Button Text="Down" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="1" 

@@ -25,5 +25,8 @@ namespace PCRemoter.Server
 
         [OperationContract]
         string Controls(string _buttonName);
+
+        [OperationContract]
+        string SendTextToWindow(string _text);
     }
 }
