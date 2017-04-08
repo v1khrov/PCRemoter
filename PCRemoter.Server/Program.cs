@@ -49,10 +49,12 @@ namespace PCRemoter.Server
 
                 // запуск службы
                 hostRemoter.Open();
+                Console.WriteLine("Хост-приложение для удаленного управления ПК с помощью PCRemoter для мобильных устройств.");
+                Console.WriteLine("(C) 2017, Dmitry Vikhrov. dmvikhrov@gmail.com");
                 Console.WriteLine("Служба запущена, адрес компьютера: ");
 
-                Console.WriteLine(localIPAddress);
-                Console.WriteLine("Порт: 5051");
+                Console.Write(localIPAddress);
+                Console.WriteLine(" Порт: 5051");
 
                 Console.WriteLine("Для остановки нажмите \"Enter\"");
                 Console.ReadLine();

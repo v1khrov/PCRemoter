@@ -75,6 +75,9 @@ namespace PCRemoter
             if (sender == leftClckBtn)
                 _buttonName = "clickLeft";
 
+            if (sender == chwinBtn)
+                _buttonName = "buttonChangeWindow";
+
             controlAnswer = await controlsClient.Controls(_buttonName);
                              
               

@@ -15,63 +15,54 @@ namespace PCRemoter.Server
         public string Controls(string _buttonName)
         {
             Console.WriteLine("Вызов метода \"Control\"");
-            IntPtr _wHandle = NativeMethods.FindWindow("PPTFrameClass", null);
-            if (_wHandle == IntPtr.Zero)
+
+            //IntPtr _wHandle = NativeMethods.FindWindow("PPTFrameClass", null);
+            /*if (_wHandle == IntPtr.Zero)
             {
                 MessageBox.Show("PowerPoint is not running.");
                 Console.WriteLine("ERROR! PowerPoint is not running.");
-            }
+            }*/
             switch (_buttonName)
             {
                 case "clickRight":
-                    MouseEventArgs _mouseEA = new MouseEventArgs(MouseButtons.Right,1,0,0,0);
+                    MouseEventArgs _mouseEA = new MouseEventArgs(MouseButtons.Right, 1, 0, 0, 0);
                     Control _ctrl = new Control();
                     //_ctrl.OnMouseClick(_mouseEA);
                     break;
                 case "buttonUp":
-                    NativeMethods.SetForegroundWindow(_wHandle);
                     SendKeys.SendWait("{UP}");
                     break;
                 case "buttonLeft":
-                    NativeMethods.SetForegroundWindow(_wHandle);
                     SendKeys.SendWait("{LEFT}");
                     break;
                 case "buttonRight":
-                    NativeMethods.SetForegroundWindow(_wHandle);
                     SendKeys.SendWait("{RIGHT}");
                     break;
                 case "buttonDown":
-                    //SendKeys.Send("{DOWN}");
-                    //IntPtr _wHandle = NativeMethods.FindWindow(null, "PUSHMYBUTTONS");
-                    //string _wTitle = NativeMethods.GetActiveWindowTitle();                    
-                    //IntPtr _wHandle = NativeMethods.FindWindow("Notepad", null);
-                    NativeMethods.SetForegroundWindow(_wHandle);
                     SendKeys.SendWait("{DOWN}");
-                    //NativeMethods.KeyPress(_wHandle, Keys.Down, false);
-                    //NativeMethods.KeyPressInt(_wHandle, 0x28, true);
                     break;
                 case "buttonTab":
-                    NativeMethods.SetForegroundWindow(_wHandle);
                     SendKeys.SendWait("{TAB}");
                     break;
                 case "buttonEnter":
-                    NativeMethods.SetForegroundWindow(_wHandle);
                     SendKeys.SendWait("{ENTER}");
                     break;
                 case "buttonF5":
-                    NativeMethods.SetForegroundWindow(_wHandle);
                     SendKeys.SendWait("{F5}");
                     break;
                 case "buttonEsc":
-                    NativeMethods.SetForegroundWindow(_wHandle);
                     SendKeys.SendWait("{ESC}");
                     break;
                 case "buttonDelete":
-                    NativeMethods.SetForegroundWindow(_wHandle);
                     SendKeys.SendWait("{DEL}");
                     break;
-            }             
-               
+                case "buttonChangeWindow":
+                    SendKeys.SendWait("%{TAB}");
+                    break;
+                default:
+                    break;
+            }
+
             return "OK";
         }
 

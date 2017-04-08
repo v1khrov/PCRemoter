@@ -41,12 +41,12 @@
 			Grid.ColumnSpan="2" x:Name="rightClckBtn" Clicked="OnControlClicked"/>
 		<Button Text="Enter" BackgroundColor="Silver" FontSize="Large" Grid.Row="6" Grid.Column="0" 
 			Grid.ColumnSpan="2" x:Name="enterBtn" Clicked="OnControlClicked"/>
-		<Button Text="F5" BackgroundColor="Silver" FontSize="Medium" Grid.Row="6" Grid.Column="2" 
-			Grid.ColumnSpan="2" x:Name="f5Btn" Clicked="OnControlClicked"/>
+		<Button Text="Alt+Tab" BackgroundColor="Silver" FontSize="Medium" Grid.Row="6" Grid.Column="2" 
+			Grid.ColumnSpan="2" x:Name="chwinBtn" Clicked="OnControlClicked"/>
 		<Button Text="Esc" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="0" 
 			x:Name="escBtn" Clicked="OnControlClicked"/>
-		<Button Text="Null" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="1" 
-			x:Name="pasteBtn" Clicked="OnControlClicked"/>
+		<Button Text="F5" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="1" 
+			x:Name="f5Btn" Clicked="OnControlClicked"/>
 		<Button Text="Delete" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="2" 
 			x:Name="delBtn" Clicked="OnControlClicked"/>
 		<Button Text="Tab" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="3" 
