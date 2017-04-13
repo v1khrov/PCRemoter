@@ -1,49 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PCRemoter"
-             x:Class="PCRemoter.MainPage"
-			Title="Connecting">
+             x:Class="PCRemoter.MainPage">
 
-	<ContentPage.Padding>
-    <OnPlatform x:TypeArguments="Thickness">
-      <OnPlatform.iOS>
-          <Thickness Left="0" Top="0" Right="0" Bottom="0" />
-       </OnPlatform.iOS>
-       <OnPlatform.Android>
-         <Thickness Left="0" Top="0" Right="0" Bottom="0" />
-       </OnPlatform.Android>
-       <OnPlatform.WinPhone>
-         <Thickness Left="0" Top="0" Right="0" Bottom="0" />
-       </OnPlatform.WinPhone>
-    </OnPlatform>
-</ContentPage.Padding>
-	<StackLayout Orientation="Vertical">
-		
-		<TableView Intent="Form">
-			<TableView.Root>
-				<TableRoot>
-					<TableSection Title="Start connecting">
-                        <EntryCell Label="PC Address" LabelColor="Gray" x:Name="labelPCAddress" Text="http://192.168.0.95:5051/RemoterService" Keyboard="Url"/>
-						<SwitchCell Text="Save" />
-						<ViewCell>
-							<Button Text="Connect" FontSize="Large" x:Name="buttonConnect" HorizontalOptions="CenterAndExpand" Clicked="OnButtonConnectClicked"/>
-						</ViewCell>
-                        <ViewCell>
-                            <Button Text="Open controls" FontSize="Default" x:Name="buttonOpenCtrls" HorizontalOptions="CenterAndExpand" Clicked="OnButtonOpenCtrlsClicked"/>
-                        </ViewCell>
-                        <ViewCell>
-                            <Label x:Name="labelConnectMsg" FontSize="Default" HorizontalOptions="CenterAndExpand" Text="Enter IP address and tap Connect" />
-                        </ViewCell>
-                        <EntryCell Label="Your test message" LabelColor="Gray" x:Name="labelMessage" Text="" Keyboard="Default"/>
-                        <EntryCell Label="Answer" LabelColor="Gray" x:Name="labelAnswer" Text="" Keyboard="Default"/>
-						<ViewCell>
-							<Button Text="Echo test" FontSize="Large" x:Name="buttonEcho" HorizontalOptions="CenterAndExpand" Clicked="OnButtonEchoClicked"/>
-						</ViewCell>
-					</TableSection>
-				</TableRoot>
-			</TableView.Root>
-		</TableView>
-	</StackLayout>
+    <TabbedPage.Children>
+        <local:ConnectionPage />
+        <local:PCControlsPage />
+        <local:SettingsPage />
+    </TabbedPage.Children>
 
-</ContentPage>
+</TabbedPage>

@@ -13,7 +13,8 @@ namespace PCRemoter
 
         public PCControlsPage()
 		{
-			InitializeComponent();			
+            controlsClient = ConnectionPage.client;
+            InitializeComponent();			
 		}
 
         //конструктор с передачей клиента
