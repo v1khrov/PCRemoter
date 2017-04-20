@@ -4,10 +4,10 @@
              xmlns:local="clr-namespace:PCRemoter"
              x:Class="PCRemoter.MainPage">
 
-    <TabbedPage.Children>
+    <!--<TabbedPage.Children>
         <local:ConnectionPage />
         <local:PCControlsPage />
         <local:SettingsPage />
-    </TabbedPage.Children>
+    </TabbedPage.Children>-->
 
 </TabbedPage>

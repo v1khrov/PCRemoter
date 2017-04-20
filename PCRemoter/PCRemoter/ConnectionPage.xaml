@@ -28,9 +28,12 @@
                         <ViewCell>
                             <Button Text="Connect" FontSize="Large" x:Name="buttonConnect" HorizontalOptions="CenterAndExpand" Clicked="OnButtonConnectClicked"/>
                         </ViewCell>
-                        <!--<ViewCell>
+                        <ViewCell>
+                            <Button Text="Load last address" FontSize="Default" x:Name="buttonLoadLast" HorizontalOptions="CenterAndExpand" Clicked="OnButtonLoadLastClicked"/>
+                        </ViewCell>
+                        <ViewCell>
                             <Button Text="Open controls" FontSize="Default" x:Name="buttonOpenCtrls" HorizontalOptions="CenterAndExpand" Clicked="OnButtonOpenCtrlsClicked"/>
-                        </ViewCell>-->
+                        </ViewCell>
                         <ViewCell>
                             <Label x:Name="labelConnectMsg" FontSize="Default" HorizontalOptions="CenterAndExpand" Text="Enter IP address and tap Connect" />
                         </ViewCell>

@@ -18,11 +18,12 @@ namespace PCRemoter
         public MainPage()
         {
             InitializeComponent();
-			
+            ConnectionPage _cpage = new ConnectionPage();
+            Children.Add(_cpage);
+            Children.Add(new PCControlsPage());
+            Children.Add(new SettingsPage());
         }
-
-        
-
+               
        
     }
 }

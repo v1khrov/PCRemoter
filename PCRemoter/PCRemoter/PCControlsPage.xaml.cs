@@ -9,25 +9,36 @@ namespace PCRemoter
 	public partial class PCControlsPage : ContentPage
 	{		
         RemoterServiceClient controlsClient;//объект класса клиента веб службы
+        string _endpoint="";
+        ConnectionPage _cp;
         string controlAnswer = "";
 
         public PCControlsPage()
 		{
-            controlsClient = ConnectionPage.client;
-            InitializeComponent();			
-		}
+            //controlsClient = ConnectionPage.client;
+            //ConnectionPage.ShareClient(out controlsClient);
+            InitializeComponent();
+           // _cp = new ConnectionPage();
+            
+        }
 
         //конструктор с передачей клиента
         public PCControlsPage(RemoterServiceClient client)
         {
-            controlsClient = client;
             InitializeComponent();
+            controlsClient = client;           
         }
 
-		void OnSettingsButtonClicked(object sender, EventArgs e)
-		{
+        public void SendClient(RemoterServiceClient client)
+        {
 
-		}
+        }
+
+        async void OnSettingsButtonClicked(object sender, EventArgs e)
+		{
+            LoadFromFile(_endpoint);
+            controlsClient = new RemoterServiceClient(0, _endpoint);
+        }
 
         async void picker_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -37,10 +48,21 @@ namespace PCRemoter
         void OnSendTextClicked (object sender, EventArgs e)
         {
 
+
         }
 
-            async void OnControlClicked(object sender, EventArgs e)
+        public async void LoadFromFile(string _text)
+        {
+            string filename = "endpointAddress.txt";
+            _text = await DependencyService.Get<IFileWorker>().LoadTextAsync(filename);
+            //return _text;
+        }
+
+        async void OnControlClicked(object sender, EventArgs e)
 		{
+
+            
+
             string _buttonName = "";
            
             if(sender == upBtn)
