@@ -56,6 +56,8 @@ namespace PCRemoter.Server
                 Console.Write(localIPAddress);
                 Console.WriteLine(" Порт: 5051");
 
+
+
                 Console.WriteLine("Для остановки нажмите \"Enter\"");
                 Console.ReadLine();
 

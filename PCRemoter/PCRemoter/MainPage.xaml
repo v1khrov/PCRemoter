@@ -10,4 +10,129 @@
         <local:SettingsPage />
     </TabbedPage.Children>-->
 
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PCRemoter"
+             x:Class="PCRemoter.MainPage"
+             Title="Connecting">
+        <ContentPage.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <OnPlatform.iOS>
+                    <Thickness Left="0" Top="0" Right="0" Bottom="0" />
+                </OnPlatform.iOS>
+                <OnPlatform.Android>
+                    <Thickness Left="0" Top="0" Right="0" Bottom="0" />
+                </OnPlatform.Android>
+                <OnPlatform.WinPhone>
+                    <Thickness Left="0" Top="0" Right="0" Bottom="0" />
+                </OnPlatform.WinPhone>
+            </OnPlatform>
+        </ContentPage.Padding>
+        <StackLayout Orientation="Vertical">
+
+            <TableView Intent="Form">
+                <TableView.Root>
+                    <TableRoot>
+                        <TableSection Title="Start connecting">
+                            <EntryCell Label="PC Address" LabelColor="Gray" x:Name="labelPCAddress" Text="http://192.168.0.95:5051/RemoterService" Keyboard="Url"/>
+                            <SwitchCell Text="Save" />
+                            <ViewCell>
+                                <Button Text="Connect" FontSize="Large" x:Name="buttonConnect" HorizontalOptions="CenterAndExpand" Clicked="OnButtonConnectClicked"/>
+                            </ViewCell>
+                            <ViewCell>
+                                <Button Text="Load last address" FontSize="Default" x:Name="buttonLoadLast" HorizontalOptions="CenterAndExpand" Clicked="OnButtonLoadLastClicked"/>
+                            </ViewCell>
+                            <ViewCell>
+                                <Button Text="Open controls" FontSize="Default" x:Name="buttonOpenCtrls" HorizontalOptions="CenterAndExpand" Clicked="OnButtonOpenCtrlsClicked"/>
+                            </ViewCell>
+                            <ViewCell>
+                                <Label x:Name="labelConnectMsg" FontSize="Default" HorizontalOptions="CenterAndExpand" Text="Enter IP address and tap Connect" />
+                            </ViewCell>
+                            <EntryCell Label="Your test message" LabelColor="Gray" x:Name="labelMessage" Text="" Keyboard="Default"/>
+                            <EntryCell Label="Answer" LabelColor="Gray" x:Name="labelAnswer" Text="" Keyboard="Default"/>
+                            <ViewCell>
+                                <Button Text="Echo test" FontSize="Large" x:Name="buttonEcho" HorizontalOptions="CenterAndExpand" Clicked="OnButtonEchoClicked"/>
+                            </ViewCell>
+                        </TableSection>
+                    </TableRoot>
+                </TableView.Root>
+            </TableView>
+        </StackLayout>
+
+    </ContentPage>
+
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="PCRemoter.MainPage"
+	Title="Controls">
+        <ContentPage.Content>
+            <Grid x:Name="ControlsGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="1.5*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ContentView Padding="1" Grid.Row="0" Grid.ColumnSpan="4">
+                    <Picker x:Name="pickerApps" SelectedIndexChanged="picker_SelectedIndexChanged">
+                        <Picker.Items>
+                            <x:String>MS PowerPoint</x:String>
+                            <x:String>Notepad</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </ContentView>
+                <Entry Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Placeholder="Enter text here..." x:Name="inputText" />
+                <Button Text="Send" Grid.Column="3" Grid.Row="1" x:Name="sendBtn" Clicked="OnSendTextClicked" />
+                <BoxView Color="Gray" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="3"/>
+                <Button Text="Left Click" BackgroundColor="Silver" FontSize="Large" Grid.Row="5" Grid.Column="0" 
+			Grid.ColumnSpan="2" x:Name="leftClckBtn" Clicked="OnControlClicked"/>
+                <Button Text="Right Click" BackgroundColor="Silver" FontSize="Large" Grid.Row="5" Grid.Column="2" 
+			Grid.ColumnSpan="2" x:Name="rightClckBtn" Clicked="OnControlClicked"/>
+                <Button Text="Enter" BackgroundColor="Silver" FontSize="Large" Grid.Row="6" Grid.Column="0" 
+			Grid.ColumnSpan="2" x:Name="enterBtn" Clicked="OnControlClicked"/>
+                <Button Text="Alt+Tab" BackgroundColor="Silver" FontSize="Medium" Grid.Row="6" Grid.Column="2" 
+			Grid.ColumnSpan="2" x:Name="chwinBtn" Clicked="OnControlClicked"/>
+                <Button Text="Esc" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="0" 
+			x:Name="escBtn" Clicked="OnControlClicked"/>
+                <Button Text="F5" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="1" 
+			x:Name="f5Btn" Clicked="OnControlClicked"/>
+                <Button Text="Delete" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="2" 
+			x:Name="delBtn" Clicked="OnControlClicked"/>
+                <Button Text="Tab" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="3" 
+			x:Name="tabBtn" Clicked="OnControlClicked"/>
+                <Button Text="Up" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="0" 
+			x:Name="upBtn" Clicked="OnControlClicked"/>
+                <Button Text="Down" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="1" 
+			x:Name="downBtn" Clicked="OnControlClicked"/>
+                <Button Text="Left" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="2" 
+			x:Name="leftBtn" Clicked="OnControlClicked"/>
+                <Button Text="Right" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="3" 
+			x:Name="rightBtn" Clicked="OnControlClicked"/>
+                <Button Text="Settings" FontSize="Default" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="2" 
+			x:Name="settingsBtn" Clicked="OnSettingsButtonClicked"/>
+
+
+            </Grid>
+        </ContentPage.Content>
+    </ContentPage>
+
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PCRemoter.MainPage"
+             Title="Settings">
+    </ContentPage>
+
 </TabbedPage>
