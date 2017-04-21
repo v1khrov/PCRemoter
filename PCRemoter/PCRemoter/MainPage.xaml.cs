@@ -45,7 +45,6 @@ namespace PCRemoter.PCRemoterServer
 
 namespace PCRemoter
 {
-
     public interface IFileWorker
     {
         Task<bool> ExistsAsync(string filename); // проверка существования файла
