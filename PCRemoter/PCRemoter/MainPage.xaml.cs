@@ -58,7 +58,7 @@ namespace PCRemoter
     {        
         public RemoterServiceClient client;
         string testAnswer = "";//ответ об успешности соединения
-        string connectIPAddress = "http://172.20.10.3:5051/PCRemoterService";/*http://192.168.0.95:5051/PCRemoterService*/ //введенный пользователем адрес хоста 
+        string connectIPAddress = "http://192.168.0.95:5051/PCRemoterService";//"http://172.20.10.3:5051/PCRemoterService";/*http://192.168.0.95:5051/PCRemoterService*/ //введенный пользователем адрес хоста 
         string echoAnswer = "";//ответ от службы
        
         string controlAnswer = "";
@@ -70,8 +70,9 @@ namespace PCRemoter
 
         private async void OnButtonConnectClicked(object sender, EventArgs e)
         {
-            connectIPAddress = labelPCAddress.Text;
-            client = new RemoterServiceClient(0, connectIPAddress);
+            //connectIPAddress = labelPCAddress.Text;
+            string endpointAddress = "http://" + ipAddress.Text + ":" + portAddress.Text + "/PCRemoterService";
+            client = new RemoterServiceClient(RemoterServiceClient.EndpointConfiguration.NetHttpBinding_IRemoterService, endpointAddress);
 
             //проверка соединения
             labelConnectMsg.Text = "Connecting to service...";
@@ -91,13 +92,13 @@ namespace PCRemoter
             {
                 labelConnectMsg.Text = "Connecting failed! " + ex.Message;
                 await DisplayAlert("Error!", "Connecting failed! " + ex.Message, "ОK");
-            }
+             }
 
         }
 
         private async void OnButtonLoadLastClicked(object sender, EventArgs e)
         {
-            LoadFromFile(labelPCAddress.Text);
+            //LoadFromFile(labelPCAddress.Text);
         }
 
         private void OnButtonOpenCtrlsClicked(object sender, EventArgs e)
@@ -226,7 +227,7 @@ namespace PCRemoter
             // получаем выделенный элемент
             string filename = (string)args.SelectedItem;
             // загружем текст в текстовое поле
-            labelPCAddress.Text = await DependencyService.Get<IFileWorker>().LoadTextAsync((string)args.SelectedItem);           
+            //labelPCAddress.Text = await DependencyService.Get<IFileWorker>().LoadTextAsync((string)args.SelectedItem);           
         }
         async void Delete(object sender, EventArgs args)
         {

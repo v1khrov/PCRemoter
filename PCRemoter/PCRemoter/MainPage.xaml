@@ -34,7 +34,9 @@
                 <TableView.Root>
                     <TableRoot>
                         <TableSection Title="Start connecting">
-                            <EntryCell Label="PC Address" LabelColor="Gray" x:Name="labelPCAddress" Text="http://192.168.0.95:5051/RemoterService" Keyboard="Url"/>
+                            <!--<EntryCell Label="PC Address" LabelColor="Gray" x:Name="labelPCAddress" Text="http://192.168.0.95:5051/RemoterService" Keyboard="Url"/>-->
+                            <EntryCell Label="IP Address" LabelColor="Gray" Text="192.168.0.95" x:Name="ipAddress" Keyboard="Url"/>
+                            <EntryCell Label="Port" LabelColor="Gray" Text="5051" x:Name="portAddress" Keyboard="Url"/>
                             <SwitchCell Text="Save" />
                             <ViewCell>
                                 <Button Text="Connect" FontSize="Large" x:Name="buttonConnect" HorizontalOptions="CenterAndExpand" Clicked="OnButtonConnectClicked"/>
