@@ -33,7 +33,7 @@ namespace PCRemoter.PCRemoterServer
                 Channel.EndControls, buttonName, null);
         }
 
-        public async Task<string> SentTextToWindow(string someText)
+        public async Task<string> SendTextToWindow(string someText)
         {
             return await Task.Factory.FromAsync<string, string>(
                 Channel.BeginSendTextToWindow,
@@ -58,7 +58,7 @@ namespace PCRemoter
     {        
         public RemoterServiceClient client;
         string testAnswer = "";//ответ об успешности соединения
-        string connectIPAddress = "http://192.168.0.95:5051/PCRemoterService";//"http://172.20.10.3:5051/PCRemoterService";/*http://192.168.0.95:5051/PCRemoterService*/ //введенный пользователем адрес хоста 
+        string connectIPAddress = "http://192.168.0.37:5051/PCRemoterService";//"http://172.20.10.3:5051/PCRemoterService";/*http://192.168.0.95:5051/PCRemoterService*/ //введенный пользователем адрес хоста 
         string echoAnswer = "";//ответ от службы
        
         string controlAnswer = "";
@@ -71,7 +71,7 @@ namespace PCRemoter
         private async void OnButtonConnectClicked(object sender, EventArgs e)
         {
             //connectIPAddress = labelPCAddress.Text;
-            string endpointAddress = "http://" + ipAddress.Text + ":" + portAddress.Text + "/PCRemoterService";
+            string endpointAddress = /*labelPCAddress.Text;*/"http://" + ipAddress.Text + ":" + portAddress.Text + "/PCRemoterService";
             client = new RemoterServiceClient(RemoterServiceClient.EndpointConfiguration.NetHttpBinding_IRemoterService, endpointAddress);
 
             //проверка соединения
@@ -101,10 +101,7 @@ namespace PCRemoter
             //LoadFromFile(labelPCAddress.Text);
         }
 
-        private void OnButtonOpenCtrlsClicked(object sender, EventArgs e)
-        {
-            //new PCControlsPage(client);
-        }       
+        
         
         async void OnButtonEchoClicked(object sender, EventArgs e)
         {
@@ -125,11 +122,7 @@ namespace PCRemoter
         }
 
         //-----------------------СТРАНИЦА УПРАВЛЕНИЕ ПК---------------------------------
-        public void SendClient(RemoterServiceClient client)
-        {
-
-        }
-
+        
         async void OnSettingsButtonClicked(object sender, EventArgs e)
         {
 
@@ -137,13 +130,14 @@ namespace PCRemoter
 
         async void picker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            await client.SentTextToWindow(inputText.Text);
+           
         }
 
-        void OnSendTextClicked(object sender, EventArgs e)
+        //отправка введенного текста в приложение на ПК
+        async void OnSendTextClicked(object sender, EventArgs e)
         {
-
-
+            string _textToSend = inputText.Text;
+            await client.SendTextToWindow(_textToSend);
         }        
 
         public async void OnControlClicked(object sender, EventArgs e)
@@ -187,15 +181,12 @@ namespace PCRemoter
                 _buttonName = "buttonChangeWindow";
 
             controlAnswer = await client.Controls(_buttonName);
-
-
         }
 
 
         protected override async void OnAppearing()
         {
-            base.OnAppearing();
-            await UpdateFileList();
+            base.OnAppearing();           
         }
 
         //сохранение пути в файл
@@ -211,9 +202,7 @@ namespace PCRemoter
                 if (isRewrited == false) return;
             }
             // перезаписываем файл
-            await DependencyService.Get<IFileWorker>().SaveTextAsync(filename, connectIPAddress);
-            // обновляем список файлов
-            await UpdateFileList();
+            await DependencyService.Get<IFileWorker>().SaveTextAsync(filename, connectIPAddress);            
         }
 
         public async void LoadFromFile(string _text)
@@ -234,15 +223,10 @@ namespace PCRemoter
             // получаем имя файла
             string filename = (string)((MenuItem)sender).BindingContext;
             // удаляем файл из списка
-            await DependencyService.Get<IFileWorker>().DeleteAsync(filename);
-            // обновляем список файлов
-            await UpdateFileList();
+            await DependencyService.Get<IFileWorker>().DeleteAsync(filename);          
+            
         }
-        // обновление списка файлов
-        async Task UpdateFileList()
-        {
-           
-        }
+        
 
     }
 }

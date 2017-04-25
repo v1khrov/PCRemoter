@@ -34,27 +34,21 @@
                 <TableView.Root>
                     <TableRoot>
                         <TableSection Title="Start connecting">
-                            <!--<EntryCell Label="PC Address" LabelColor="Gray" x:Name="labelPCAddress" Text="http://192.168.0.95:5051/RemoterService" Keyboard="Url"/>-->
+                            <EntryCell Label="PC Address" LabelColor="Gray" x:Name="labelPCAddress" Text="http://192.168.0.95:5051/RemoterService" Keyboard="Url"/>
                             <EntryCell Label="IP Address" LabelColor="Gray" Text="192.168.0.95" x:Name="ipAddress" Keyboard="Url"/>
                             <EntryCell Label="Port" LabelColor="Gray" Text="5051" x:Name="portAddress" Keyboard="Url"/>
                             <SwitchCell Text="Save" />
                             <ViewCell>
                                 <Button Text="Connect" FontSize="Large" x:Name="buttonConnect" HorizontalOptions="CenterAndExpand" Clicked="OnButtonConnectClicked"/>
                             </ViewCell>
-                            <ViewCell>
+                            <!--<ViewCell>
                                 <Button Text="Load last address" FontSize="Default" x:Name="buttonLoadLast" HorizontalOptions="CenterAndExpand" Clicked="OnButtonLoadLastClicked"/>
-                            </ViewCell>
-                            <ViewCell>
-                                <Button Text="Open controls" FontSize="Default" x:Name="buttonOpenCtrls" HorizontalOptions="CenterAndExpand" Clicked="OnButtonOpenCtrlsClicked"/>
-                            </ViewCell>
+                            </ViewCell>-->
+                            
                             <ViewCell>
                                 <Label x:Name="labelConnectMsg" FontSize="Default" HorizontalOptions="CenterAndExpand" Text="Enter IP address and tap Connect" />
                             </ViewCell>
-                            <EntryCell Label="Your test message" LabelColor="Gray" x:Name="labelMessage" Text="" Keyboard="Default"/>
-                            <EntryCell Label="Answer" LabelColor="Gray" x:Name="labelAnswer" Text="" Keyboard="Default"/>
-                            <ViewCell>
-                                <Button Text="Echo test" FontSize="Large" x:Name="buttonEcho" HorizontalOptions="CenterAndExpand" Clicked="OnButtonEchoClicked"/>
-                            </ViewCell>
+                            
                         </TableSection>
                     </TableRoot>
                 </TableView.Root>
@@ -90,9 +84,7 @@
                 </Grid.ColumnDefinitions>
                 <ContentView Padding="1" Grid.Row="0" Grid.ColumnSpan="4">
                     <Picker x:Name="pickerApps" SelectedIndexChanged="picker_SelectedIndexChanged">
-                        <Picker.Items>
-                            <x:String>MS PowerPoint</x:String>
-                            <x:String>Notepad</x:String>
+                        <Picker.Items>                            
                         </Picker.Items>
                     </Picker>
                 </ContentView>
@@ -135,6 +127,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PCRemoter.MainPage"
              Title="Settings">
+
+        <StackLayout Orientation="Vertical">
+
+            <TableView Intent="Settings">
+                <TableView.Root>
+                    <TableRoot>
+                        <TableSection Title="Testing connection">
+                            <EntryCell Label="Your test message" LabelColor="Gray" x:Name="labelMessage" Text="" Keyboard="Default"/>
+                            <EntryCell Label="Answer" LabelColor="Gray" x:Name="labelAnswer" Text="" Keyboard="Default"/>
+                            <ViewCell>
+                                <Button Text="Echo test" FontSize="Large" x:Name="buttonEcho" HorizontalOptions="CenterAndExpand" Clicked="OnButtonEchoClicked"/>
+                            </ViewCell>
+                        </TableSection>
+                    </TableRoot>
+                </TableView.Root>
+            </TableView>
+        </StackLayout>
+
+
     </ContentPage>
 
 </TabbedPage>
