@@ -14,7 +14,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PCRemoter"
              x:Class="PCRemoter.MainPage"
-             Title="Connecting">
+             x:Name="connectingPage"
+             >
         <ContentPage.Padding>
             <OnPlatform x:TypeArguments="Thickness">
                 <OnPlatform.iOS>
@@ -33,20 +34,20 @@
             <TableView Intent="Form">
                 <TableView.Root>
                     <TableRoot>
-                        <TableSection Title="Start connecting">
-                            <EntryCell Label="PC Address" LabelColor="Gray" x:Name="labelPCAddress" Text="http://192.168.0.95:5051/RemoterService" Keyboard="Url"/>
-                            <EntryCell Label="IP Address" LabelColor="Gray" Text="192.168.0.95" x:Name="ipAddress" Keyboard="Url"/>
-                            <EntryCell Label="Port" LabelColor="Gray" Text="5051" x:Name="portAddress" Keyboard="Url"/>
-                            <SwitchCell Text="Save" />
+                        <TableSection x:Name="tableConnectionSection">
+                            <!--<EntryCell Label="PC Address" LabelColor="Gray" x:Name="labelPCAddress" Text="http://192.168.0.95:5051/RemoterService" Keyboard="Url"/>-->
+                            <EntryCell LabelColor="Gray" Text="192.168.0.95" x:Name="ipAddress" Keyboard="Url"/>
+                            <EntryCell LabelColor="Gray" Text="5051" x:Name="portAddress" Keyboard="Url"/>
+                            <SwitchCell x:Name="saveSwitch" />
                             <ViewCell>
-                                <Button Text="Connect" FontSize="Large" x:Name="buttonConnect" HorizontalOptions="CenterAndExpand" Clicked="OnButtonConnectClicked"/>
+                                <Button  FontSize="Large" x:Name="buttonConnect" HorizontalOptions="CenterAndExpand" Clicked="OnButtonConnectClicked"/>
                             </ViewCell>
                             <!--<ViewCell>
                                 <Button Text="Load last address" FontSize="Default" x:Name="buttonLoadLast" HorizontalOptions="CenterAndExpand" Clicked="OnButtonLoadLastClicked"/>
                             </ViewCell>-->
                             
                             <ViewCell>
-                                <Label x:Name="labelConnectMsg" FontSize="Default" HorizontalOptions="CenterAndExpand" Text="Enter IP address and tap Connect" />
+                                <Label x:Name="labelConnectMsg" FontSize="Default" HorizontalOptions="CenterAndExpand"  />
                             </ViewCell>
                             
                         </TableSection>
@@ -60,7 +61,8 @@
     <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	x:Class="PCRemoter.MainPage"
-	Title="Controls">
+    x:Name="controlsPage"                 
+	>
         <ContentPage.Content>
             <Grid x:Name="ControlsGrid">
                 <Grid.RowDefinitions>
@@ -88,12 +90,12 @@
                         </Picker.Items>
                     </Picker>
                 </ContentView>
-                <Entry Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Placeholder="Enter text here..." x:Name="inputText" />
-                <Button Text="Send" Grid.Column="3" Grid.Row="1" x:Name="sendBtn" Clicked="OnSendTextClicked" />
+                <Entry Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  x:Name="inputText" />
+                <Button Grid.Column="3" Grid.Row="1" x:Name="sendBtn" Clicked="OnSendTextClicked" />
                 <BoxView Color="Gray" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="3"/>
-                <Button Text="Left Click" BackgroundColor="Silver" FontSize="Large" Grid.Row="5" Grid.Column="0" 
+                <Button BackgroundColor="Silver" FontSize="Large" Grid.Row="5" Grid.Column="0" 
 			Grid.ColumnSpan="2" x:Name="leftClckBtn" Clicked="OnControlClicked"/>
-                <Button Text="Right Click" BackgroundColor="Silver" FontSize="Large" Grid.Row="5" Grid.Column="2" 
+                <Button BackgroundColor="Silver" FontSize="Large" Grid.Row="5" Grid.Column="2" 
 			Grid.ColumnSpan="2" x:Name="rightClckBtn" Clicked="OnControlClicked"/>
                 <Button Text="Enter" BackgroundColor="Silver" FontSize="Large" Grid.Row="6" Grid.Column="0" 
 			Grid.ColumnSpan="2" x:Name="enterBtn" Clicked="OnControlClicked"/>
@@ -115,8 +117,7 @@
 			x:Name="leftBtn" Clicked="OnControlClicked"/>
                 <Button Text="Right" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="3" 
 			x:Name="rightBtn" Clicked="OnControlClicked"/>
-                <Button Text="Settings" FontSize="Default" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="2" 
-			x:Name="settingsBtn" Clicked="OnSettingsButtonClicked"/>
+                
 
 
             </Grid>
@@ -126,14 +127,15 @@
     <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PCRemoter.MainPage"
-             Title="Settings">
+                 x:Name="settingsPage"
+             >
 
         <StackLayout Orientation="Vertical">
 
             <TableView Intent="Settings">
                 <TableView.Root>
                     <TableRoot>
-                        <TableSection Title="Testing connection">
+                        <TableSection x:Name="testingSection" >
                             <EntryCell Label="Your test message" LabelColor="Gray" x:Name="labelMessage" Text="" Keyboard="Default"/>
                             <EntryCell Label="Answer" LabelColor="Gray" x:Name="labelAnswer" Text="" Keyboard="Default"/>
                             <ViewCell>

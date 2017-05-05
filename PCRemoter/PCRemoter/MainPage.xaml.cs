@@ -63,19 +63,33 @@ namespace PCRemoter
        
         string controlAnswer = "";
         public MainPage()
-        {
+        {            
             InitializeComponent();
-            
+            tableConnectionSection.Title = Resource.ConnectionCathegory;
+            ipAddress.Label = Resource.IPAddressLabel;
+            portAddress.Label = Resource.PortLabel;
+            saveSwitch.Text = Resource.SwitchSaveLabel;
+            buttonConnect.Text = Resource.ButtonConnectText;
+            labelConnectMsg.Text = Resource.StatusStartLabel;
+            connectingPage.Title = Resource.ConnectingPageTitle;
+            controlsPage.Title = Resource.ControlsPageTitle;
+            inputText.Placeholder = Resource.SendTextPlaceholder;
+            sendBtn.Text = Resource.SendButtonText;
+            leftClckBtn.Text = Resource.LeftClickText;
+            rightClckBtn.Text = Resource.RightClickText;
+            settingsPage.Title = Resource.SettingsPageTitle;
+            testingSection.Title = Resource.TestingSectionTitle;
+
         }
 
         private async void OnButtonConnectClicked(object sender, EventArgs e)
         {
             //connectIPAddress = labelPCAddress.Text;
-            string endpointAddress = /*labelPCAddress.Text;*/"http://" + ipAddress.Text + ":" + portAddress.Text + "/PCRemoterService";
+            string endpointAddress = /*labelPCAddress.Text;*/"http://" + ipAddress.Text + ":" + portAddress.Text + "/RemoterService";
             client = new RemoterServiceClient(RemoterServiceClient.EndpointConfiguration.NetHttpBinding_IRemoterService, endpointAddress);
 
             //проверка соединения
-            labelConnectMsg.Text = "Connecting to service...";
+            labelConnectMsg.Text = Resource.StatusConnectingLabel;
 
             try
             {
@@ -85,12 +99,12 @@ namespace PCRemoter
                     throw new Exception("Host not found!");
 
                 }
-                labelConnectMsg.Text = "Connecting successed!";
+                labelConnectMsg.Text = Resource.StatusSuccessLabel;
                 Save();                
             }
             catch (Exception ex)
             {
-                labelConnectMsg.Text = "Connecting failed! " + ex.Message;
+                labelConnectMsg.Text = Resource.StatusFailLabel + ex.Message;
                 await DisplayAlert("Error!", "Connecting failed! " + ex.Message, "ОK");
              }
 
