@@ -56,7 +56,7 @@ namespace PCRemoter.Server
                 Console.Write(localIPAddress);
                 Console.WriteLine(" Порт: 5051");
 
-
+                Console.WriteLine("В приложении на мобильном устройстве введите данные IP адрес и порт и нажмите Подключиться");
 
                 Console.WriteLine("Для остановки нажмите \"Enter\"");
                 Console.ReadLine();

@@ -38,7 +38,7 @@
                             <!--<EntryCell Label="PC Address" LabelColor="Gray" x:Name="labelPCAddress" Text="http://192.168.0.95:5051/RemoterService" Keyboard="Url"/>-->
                             <EntryCell LabelColor="Gray" Text="192.168.0.95" x:Name="ipAddress" Keyboard="Url"/>
                             <EntryCell LabelColor="Gray" Text="5051" x:Name="portAddress" Keyboard="Url"/>
-                            <SwitchCell x:Name="saveSwitch" />
+                            <SwitchCell x:Name="saveSwitch" On="True" />
                             <ViewCell>
                                 <Button  FontSize="Large" x:Name="buttonConnect" HorizontalOptions="CenterAndExpand" Clicked="OnButtonConnectClicked"/>
                             </ViewCell>
@@ -71,10 +71,10 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="1.5*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="1.3*" />
+                    <RowDefinition Height="1.3*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
@@ -84,40 +84,42 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <ContentView Padding="1" Grid.Row="0" Grid.ColumnSpan="4">
-                    <Picker x:Name="pickerApps" SelectedIndexChanged="picker_SelectedIndexChanged">
-                        <Picker.Items>                            
-                        </Picker.Items>
-                    </Picker>
-                </ContentView>
-                <Entry Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  x:Name="inputText" />
-                <Button Grid.Column="3" Grid.Row="1" x:Name="sendBtn" Clicked="OnSendTextClicked" />
-                <BoxView Color="Gray" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="3"/>
-                <Button BackgroundColor="Silver" FontSize="Large" Grid.Row="5" Grid.Column="0" 
-			Grid.ColumnSpan="2" x:Name="leftClckBtn" Clicked="OnControlClicked"/>
-                <Button BackgroundColor="Silver" FontSize="Large" Grid.Row="5" Grid.Column="2" 
-			Grid.ColumnSpan="2" x:Name="rightClckBtn" Clicked="OnControlClicked"/>
-                <Button Text="Enter" BackgroundColor="Silver" FontSize="Large" Grid.Row="6" Grid.Column="0" 
-			Grid.ColumnSpan="2" x:Name="enterBtn" Clicked="OnControlClicked"/>
-                <Button Text="Alt+Tab" BackgroundColor="Silver" FontSize="Medium" Grid.Row="6" Grid.Column="2" 
-			Grid.ColumnSpan="2" x:Name="chwinBtn" Clicked="OnControlClicked"/>
-                <Button Text="Esc" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="0" 
-			x:Name="escBtn" Clicked="OnControlClicked"/>
-                <Button Text="F5" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="1" 
-			x:Name="f5Btn" Clicked="OnControlClicked"/>
-                <Button Text="Delete" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="2" 
-			x:Name="delBtn" Clicked="OnControlClicked"/>
-                <Button Text="Tab" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="3" 
-			x:Name="tabBtn" Clicked="OnControlClicked"/>
-                <Button Text="Up" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="0" 
-			x:Name="upBtn" Clicked="OnControlClicked"/>
-                <Button Text="Down" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="1" 
-			x:Name="downBtn" Clicked="OnControlClicked"/>
-                <Button Text="Left" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="2" 
-			x:Name="leftBtn" Clicked="OnControlClicked"/>
-                <Button Text="Right" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="3" 
-			x:Name="rightBtn" Clicked="OnControlClicked"/>
                 
+                <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  x:Name="inputText" />
+                <Button Grid.Column="3" Grid.Row="0" x:Name="sendBtn" Clicked="OnSendTextClicked" />
+                <BoxView Color="Gray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="3"/>                
+                <Button BackgroundColor="Silver" FontSize="Default" Grid.Row="4" Grid.Column="0" 
+			Grid.ColumnSpan="2" x:Name="leftClckBtn" Clicked="OnControlClicked"/>
+                <Button BackgroundColor="Silver" FontSize="Default" Grid.Row="4" Grid.Column="2" 
+			Grid.ColumnSpan="2" x:Name="rightClckBtn" Clicked="OnControlClicked"/>
+                <Button Text="Alt+Tab" BackgroundColor="Silver" FontSize="Medium" Grid.Row="5" Grid.Column="0" 
+			Grid.ColumnSpan="2" x:Name="chwinBtn" Clicked="OnControlClicked"/>
+                <Button Text="Enter" BackgroundColor="Silver" FontSize="Large" Grid.Row="5" Grid.Column="2" 
+			Grid.ColumnSpan="2" x:Name="enterBtn" Clicked="OnControlClicked"/>                
+                <Button Text="Esc" BackgroundColor="Silver" FontSize="Small" Grid.Row="6" Grid.Column="0" 
+			x:Name="escBtn" Clicked="OnControlClicked"/>
+                <Button Text="Backspace" BackgroundColor="Silver" FontSize="Small" Grid.Row="6" Grid.Column="1" 
+			x:Name="bckspaceBtn" Clicked="OnControlClicked"/>
+                <Button Text="Delete" BackgroundColor="Silver" FontSize="Small" Grid.Row="6" Grid.Column="2" 
+			x:Name="delBtn" Clicked="OnControlClicked"/>
+                <Button Text="Tab" BackgroundColor="Silver" FontSize="Small" Grid.Row="6" Grid.Column="3" 
+			x:Name="tabBtn" Clicked="OnControlClicked"/>
+                <Button Text="↑" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="1" 
+			Grid.ColumnSpan="2" x:Name="upBtn" Clicked="OnControlClicked"/>
+                <Button Text="↓" BackgroundColor="Silver" FontSize="Small" Grid.Row="8" Grid.Column="1" 
+			Grid.ColumnSpan="2" x:Name="downBtn" Clicked="OnControlClicked"/>
+                <Button Text="←" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="0" 
+			Grid.RowSpan="2" x:Name="leftBtn" Clicked="OnControlClicked"/>
+                <Button Text="→" BackgroundColor="Silver" FontSize="Small" Grid.Row="7" Grid.Column="3" 
+			Grid.RowSpan="2" x:Name="rightBtn" Clicked="OnControlClicked"/>
+                <Button Text="F1" BackgroundColor="Silver" FontSize="Small" Grid.Row="9" Grid.Column="0" 
+			x:Name="f1Btn" Clicked="OnControlClicked"/>
+                <Button Text="F5" BackgroundColor="Silver" FontSize="Small" Grid.Row="9" Grid.Column="1" 
+			x:Name="f5Btn" Clicked="OnControlClicked"/>
+                <Button Text="Windows" BackgroundColor="Silver" FontSize="Small" Grid.Row="9" Grid.Column="2" 
+			x:Name="winBtn" Clicked="OnControlClicked"/>
+                <Button Text="Screenshot" BackgroundColor="Silver" FontSize="Small" Grid.Row="9" Grid.Column="3" 
+			x:Name="winscreenBtn" Clicked="OnControlClicked"/>
 
 
             </Grid>

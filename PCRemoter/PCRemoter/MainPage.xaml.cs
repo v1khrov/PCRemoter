@@ -194,6 +194,18 @@ namespace PCRemoter
             if (sender == chwinBtn)
                 _buttonName = "buttonChangeWindow";
 
+            if (sender == f1Btn)
+                _buttonName = "buttonF1";
+
+            if (sender == bckspaceBtn)
+                _buttonName = "buttonBackspace";
+
+            if (sender == winBtn)
+                _buttonName = "buttonWindows";
+
+            if (sender == winscreenBtn)
+                _buttonName = "buttonScreenshot";
+
             controlAnswer = await client.Controls(_buttonName);
         }
 
@@ -212,7 +224,7 @@ namespace PCRemoter
             if (await DependencyService.Get<IFileWorker>().ExistsAsync(filename))
             {
                 // запрашиваем разрешение на перезапись
-                bool isRewrited = await DisplayAlert("Saving", "Saved path already exists, rewrite?", "Yes", "No");
+                bool isRewrited = saveSwitch.On;//await DisplayAlert("Saving", "Saved path already exists, rewrite?", "Yes", "No");
                 if (isRewrited == false) return;
             }
             // перезаписываем файл

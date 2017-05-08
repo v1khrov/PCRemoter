@@ -125,7 +125,7 @@ namespace PCRemoter {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на RightClick.
+        ///   Ищет локализованную строку, похожую на Right Click.
         /// </summary>
         internal static string RightClickText {
             get {

@@ -59,6 +59,18 @@ namespace PCRemoter.Server
                 case "buttonChangeWindow":
                     SendKeys.SendWait("%{TAB}");
                     break;
+                case "buttonF1":
+                    SendKeys.SendWait("{F1}");
+                    break;
+                case "buttonBackspace":
+                    SendKeys.SendWait("{BACKSPACE}");
+                    break;
+                case "buttonWindows":
+                    //SendKeys.SendWait("{WINDOWS}");
+                    break;
+                case "buttonScreenshot":
+                    SendKeys.SendWait("{PRTSC}");
+                    break;
                 default:
                     break;
             }
@@ -85,26 +97,16 @@ namespace PCRemoter.Server
 
         public string SendTextToWindow(string _text)
         {
-            Console.WriteLine("Вызов метода \"SendTextToWindow\"");
-            IntPtr _wHandle = NativeMethods.FindWindow("PPTFrameClass", null);
-            if (_wHandle == IntPtr.Zero)
-            {
-                MessageBox.Show("PowerPoint is not running.");
-                Console.WriteLine("ERROR! PowerPoint is not running.");
-                return "ERROR";
-            }
-            else
-            {
-                NativeMethods.SetForegroundWindow(_wHandle);
-                SendKeys.SendWait(_text);
-                return "OK";
-            }            
+            Console.WriteLine("Вызов метода \"SendTextToWindow\"");            
+            
+            SendKeys.SendWait(_text);
+            return "OK";                      
             
         }
 
         public string TestConnection()
         {
-            Console.WriteLine("Запрос на тестирование соединения");
+            Console.WriteLine("Тестирование соединения");
             return "OK";
         }
     }

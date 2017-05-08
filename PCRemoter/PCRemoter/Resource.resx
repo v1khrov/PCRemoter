@@ -140,7 +140,7 @@
     <value>Port</value>
   </data>
   <data name="RightClickText" xml:space="preserve">
-    <value>RightClick</value>
+    <value>Right Click</value>
   </data>
   <data name="SendButtonText" xml:space="preserve">
     <value>Send</value>

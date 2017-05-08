@@ -121,35 +121,35 @@
     <value>Подключиться</value>
   </data>
   <data name="ConnectingPageTitle" xml:space="preserve">
-    <value>Connecting</value>
+    <value>Подключение</value>
   </data>
   <data name="ConnectionCathegory" xml:space="preserve">
     <value>Подключение к ПК</value>
     <comment>Название категории подключения</comment>
   </data>
   <data name="ControlsPageTitle" xml:space="preserve">
-    <value>Controls</value>
+    <value>Пульт ДУ</value>
   </data>
   <data name="IPAddressLabel" xml:space="preserve">
     <value>IP адрес</value>
   </data>
   <data name="LeftClickText" xml:space="preserve">
-    <value>Left Click</value>
+    <value>Левый клик</value>
   </data>
   <data name="PortLabel" xml:space="preserve">
     <value>Порт</value>
   </data>
   <data name="RightClickText" xml:space="preserve">
-    <value>RightClick</value>
+    <value>Правый клик</value>
   </data>
   <data name="SendButtonText" xml:space="preserve">
-    <value>Send</value>
+    <value>Отправить</value>
   </data>
   <data name="SendTextPlaceholder" xml:space="preserve">
-    <value>Enter text here...</value>
+    <value>Введите строку...</value>
   </data>
   <data name="SettingsPageTitle" xml:space="preserve">
-    <value>Settings</value>
+    <value>Настройки</value>
   </data>
   <data name="StatusConnectingLabel" xml:space="preserve">
     <value>Соединение...</value>
@@ -167,6 +167,6 @@
     <value>Сохранить</value>
   </data>
   <data name="TestingSectionTitle" xml:space="preserve">
-    <value>Test connection</value>
+    <value>Тест соединения</value>
   </data>
 </root>
