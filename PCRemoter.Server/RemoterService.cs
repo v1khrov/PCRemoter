@@ -57,7 +57,7 @@ namespace PCRemoter.Server
                     SendKeys.SendWait("{DEL}");
                     break;
                 case "buttonChangeWindow":
-                    SendKeys.SendWait("%{TAB}");
+                    SendKeys.SendWait("%{ESC}");
                     break;
                 case "buttonF1":
                     SendKeys.SendWait("{F1}");
