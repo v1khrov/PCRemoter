@@ -62,11 +62,29 @@ namespace PCRemoter {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Change Window.
+        /// </summary>
+        internal static string ButtonChangeWindowText {
+            get {
+                return ResourceManager.GetString("ButtonChangeWindowText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Connect.
         /// </summary>
         internal static string ButtonConnectText {
             get {
                 return ResourceManager.GetString("ButtonConnectText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на PrintScr.
+        /// </summary>
+        internal static string ButtonScreenshotText {
+            get {
+                return ResourceManager.GetString("ButtonScreenshotText", resourceCulture);
             }
         }
         

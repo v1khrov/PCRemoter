@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ButtonChangeWindowText" xml:space="preserve">
+    <value>Change Window</value>
+  </data>
   <data name="ButtonConnectText" xml:space="preserve">
     <value>Connect</value>
+  </data>
+  <data name="ButtonScreenshotText" xml:space="preserve">
+    <value>PrintScr</value>
   </data>
   <data name="ConnectingPageTitle" xml:space="preserve">
     <value>Connecting</value>

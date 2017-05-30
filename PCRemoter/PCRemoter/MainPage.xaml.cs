@@ -77,6 +77,8 @@ namespace PCRemoter
             sendBtn.Text = Resource.SendButtonText;
             leftClckBtn.Text = Resource.LeftClickText;
             rightClckBtn.Text = Resource.RightClickText;
+            chwinBtn.Text = Resource.ButtonChangeWindowText;
+            winscreenBtn.Text = Resource.ButtonScreenshotText;
             settingsPage.Title = Resource.SettingsPageTitle;
             testingSection.Title = Resource.TestingSectionTitle;
 

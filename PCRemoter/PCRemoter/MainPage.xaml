@@ -92,13 +92,13 @@
 			Grid.ColumnSpan="2" x:Name="leftClckBtn" Clicked="OnControlClicked"/>
                 <Button BackgroundColor="Silver" FontSize="Default" Grid.Row="4" Grid.Column="2" 
 			Grid.ColumnSpan="2" x:Name="rightClckBtn" Clicked="OnControlClicked"/>
-                <Button Text="Alt+Tab" BackgroundColor="Silver" FontSize="Medium" Grid.Row="5" Grid.Column="0" 
+                <Button BackgroundColor="Silver" FontSize="Medium" Grid.Row="5" Grid.Column="0" 
 			Grid.ColumnSpan="2" x:Name="chwinBtn" Clicked="OnControlClicked"/>
                 <Button Text="Enter" BackgroundColor="Silver" FontSize="Large" Grid.Row="5" Grid.Column="2" 
 			Grid.ColumnSpan="2" x:Name="enterBtn" Clicked="OnControlClicked"/>                
                 <Button Text="Esc" BackgroundColor="Silver" FontSize="Small" Grid.Row="6" Grid.Column="0" 
 			x:Name="escBtn" Clicked="OnControlClicked"/>
-                <Button Text="Backspace" BackgroundColor="Silver" FontSize="Small" Grid.Row="6" Grid.Column="1" 
+                <Button Text="BSpace" BackgroundColor="Silver" FontSize="Small" Grid.Row="6" Grid.Column="1" 
 			x:Name="bckspaceBtn" Clicked="OnControlClicked"/>
                 <Button Text="Delete" BackgroundColor="Silver" FontSize="Small" Grid.Row="6" Grid.Column="2" 
 			x:Name="delBtn" Clicked="OnControlClicked"/>
@@ -116,9 +116,9 @@
 			x:Name="f1Btn" Clicked="OnControlClicked"/>
                 <Button Text="F5" BackgroundColor="Silver" FontSize="Small" Grid.Row="9" Grid.Column="1" 
 			x:Name="f5Btn" Clicked="OnControlClicked"/>
-                <Button Text="Windows" BackgroundColor="Silver" FontSize="Small" Grid.Row="9" Grid.Column="2" 
+                <Button Text="Win" BackgroundColor="Silver" FontSize="Small" Grid.Row="9" Grid.Column="2" 
 			x:Name="winBtn" Clicked="OnControlClicked"/>
-                <Button Text="Screenshot" BackgroundColor="Silver" FontSize="Small" Grid.Row="9" Grid.Column="3" 
+                <Button BackgroundColor="Silver" FontSize="Small" Grid.Row="9" Grid.Column="3" 
 			x:Name="winscreenBtn" Clicked="OnControlClicked"/>
 
 
