@@ -87,7 +87,23 @@
                 
                 <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  x:Name="inputText" />
                 <Button Grid.Column="3" Grid.Row="0" x:Name="sendBtn" Clicked="OnSendTextClicked" />
-                <BoxView Color="Gray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="3"/>                
+                <!--<BoxView Color="Gray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="3"/>-->
+                <Button Text="MouseUpLeft" BackgroundColor="Silver" FontSize="Default" Grid.Row="1" Grid.Column="0" 
+			x:Name="mouseULBtn" Clicked="OnControlClicked"/>
+                <Button Text="MouseUp" BackgroundColor="Silver" FontSize="Default" Grid.Row="1" Grid.Column="1" 
+			Grid.ColumnSpan="2" x:Name="mouseUBtn" Clicked="OnControlClicked"/>
+                <Button Text="MouseUpRight" BackgroundColor="Silver" FontSize="Default" Grid.Row="1" Grid.Column="3" 
+			x:Name="mouseURBtn" Clicked="OnControlClicked"/>
+                <Button Text="MouseLeft" BackgroundColor="Silver" FontSize="Default" Grid.Row="2" Grid.Column="0" 
+			Grid.ColumnSpan="2" x:Name="mouseLBtn" Clicked="OnControlClicked"/>
+                <Button Text="MouseRight" BackgroundColor="Silver" FontSize="Default" Grid.Row="2" Grid.Column="2" 
+			Grid.ColumnSpan="2" x:Name="mouseRBtn" Clicked="OnControlClicked"/>
+                <Button Text="MouseDownLeft" BackgroundColor="Silver" FontSize="Default" Grid.Row="3" Grid.Column="0" 
+			x:Name="mouseDLBtn" Clicked="OnControlClicked"/>
+                <Button Text="MouseDown" BackgroundColor="Silver" FontSize="Default" Grid.Row="3" Grid.Column="1" 
+			Grid.ColumnSpan="2" x:Name="mouseDBtn" Clicked="OnControlClicked"/>
+                <Button Text="MouseDownRight" BackgroundColor="Silver" FontSize="Default" Grid.Row="3" Grid.Column="3" 
+			x:Name="mouseDRBtn" Clicked="OnControlClicked"/>
                 <Button BackgroundColor="Silver" FontSize="Default" Grid.Row="4" Grid.Column="0" 
 			Grid.ColumnSpan="2" x:Name="leftClckBtn" Clicked="OnControlClicked"/>
                 <Button BackgroundColor="Silver" FontSize="Default" Grid.Row="4" Grid.Column="2" 
