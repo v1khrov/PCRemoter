@@ -50,6 +50,12 @@
   <wsdl:message name="IRemoterService_SendTextToWindow_OutputMessage">
     <wsdl:part name="parameters" element="tns:SendTextToWindowResponse" />
   </wsdl:message>
+  <wsdl:message name="IRemoterService_SetMouseMoveStep_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetMouseMoveStep" />
+  </wsdl:message>
+  <wsdl:message name="IRemoterService_SetMouseMoveStep_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetMouseMoveStepResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRemoterService">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IRemoterService/DoWork" message="tns:IRemoterService_DoWork_InputMessage" />
@@ -74,6 +80,10 @@
     <wsdl:operation name="SendTextToWindow">
       <wsdl:input wsaw:Action="http://tempuri.org/IRemoterService/SendTextToWindow" message="tns:IRemoterService_SendTextToWindow_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRemoterService/SendTextToWindowResponse" message="tns:IRemoterService_SendTextToWindow_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetMouseMoveStep">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRemoterService/SetMouseMoveStep" message="tns:IRemoterService_SetMouseMoveStep_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRemoterService/SetMouseMoveStepResponse" message="tns:IRemoterService_SetMouseMoveStep_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetHttpBinding_IRemoterService" type="tns:IRemoterService">
@@ -126,6 +136,15 @@
     </wsdl:operation>
     <wsdl:operation name="SendTextToWindow">
       <soap12:operation soapAction="http://tempuri.org/IRemoterService/SendTextToWindow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetMouseMoveStep">
+      <soap12:operation soapAction="http://tempuri.org/IRemoterService/SetMouseMoveStep" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -1,33 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Windows.Forms;
+using PCRemoter.Server;
+
 
 namespace PCRemoter.Server
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RemoterService" in both code and config file together.
     public class RemoterService : IRemoterService
     {
-        
+        int _step = 7;
+
         public string Controls(string _buttonName)
         {
             Console.WriteLine("Вызов метода \"Control\"");
 
-            //IntPtr _wHandle = NativeMethods.FindWindow("PPTFrameClass", null);
-            /*if (_wHandle == IntPtr.Zero)
-            {
-                MessageBox.Show("PowerPoint is not running.");
-                Console.WriteLine("ERROR! PowerPoint is not running.");
-            }*/
+            int yScreen = SystemInformation.PrimaryMonitorSize.Height;//Высота экрана
+            int xScreen = SystemInformation.PrimaryMonitorSize.Width;//Ширина экрана
+
+            Point currPosition = Cursor.Position; //текущее положение курсора мыши
+            
+
             switch (_buttonName)
             {
+                case "mouseDown":
+                    Cursor.Position = new Point(currPosition.X, currPosition.Y + _step);
+                    break;
+                case "mouseDownLeft":
+                    Cursor.Position = new Point(currPosition.X - _step, currPosition.Y + _step);
+                    break;
+                case "mouseDownRight":
+                    Cursor.Position = new Point(currPosition.X + _step, currPosition.Y + _step);
+                    break;
+                case "mouseLeft":
+                    Cursor.Position = new Point(currPosition.X - _step, currPosition.Y);
+                    break;
+                case "mouseRight":
+                    Cursor.Position = new Point(currPosition.X + _step, currPosition.Y);
+                    break;
+                case "mouseUp":
+                    Cursor.Position = new Point(currPosition.X, currPosition.Y - _step);
+                    break;
+                case "mouseUpLeft":
+                    Cursor.Position = new Point(currPosition.X - _step, currPosition.Y - _step);
+                    break;
+                case "mouseUpRight":
+                    Cursor.Position = new Point(currPosition.X + _step, currPosition.Y - _step);
+                    break;
+                case "clickLeft":
+                    {
+                        //MouseEventArgs _mouseEA = new MouseEventArgs(MouseButtons.Right, 1, currPosition.X, currPosition.Y, 0);
+                        //Control _ctrl = new Control();
+                        //_ctrl.MouseClick(_mouseEA);
+                        NativeMethods.SetCursorPos(currPosition.X, currPosition.Y);
+                        NativeMethods.mouse_event((int)MouseEvent.MOUSEEVENTF_LEFTDOWN, currPosition.X, currPosition.Y, 0, 0);
+                        NativeMethods.mouse_event((int)MouseEvent.MOUSEEVENTF_LEFTUP, currPosition.X, currPosition.Y, 0, 0);
+                    }
+                    break;
                 case "clickRight":
-                    MouseEventArgs _mouseEA = new MouseEventArgs(MouseButtons.Right, 1, 0, 0, 0);
-                    Control _ctrl = new Control();
-                    //_ctrl.OnMouseClick(_mouseEA);
+                    {
+                        //MouseEventArgs _mouseEA = new MouseEventArgs(MouseButtons.Right, 1, currPosition.X, currPosition.Y, 0);
+                        //Control _ctrl = new Control();
+                        //_ctrl.MouseClick(_mouseEA);
+                        NativeMethods.SetCursorPos(currPosition.X, currPosition.Y);
+                        NativeMethods.mouse_event((int)MouseEvent.MOUSEEVENTF_RIGHTDOWN, currPosition.X, currPosition.Y, 0, 0);
+                        NativeMethods.mouse_event((int)MouseEvent.MOUSEEVENTF_RIGHTUP, currPosition.X, currPosition.Y, 0, 0);
+                    }
                     break;
                 case "buttonUp":
                     SendKeys.SendWait("{UP}");
@@ -104,9 +147,19 @@ namespace PCRemoter.Server
             
         }
 
+        public string SetMouseMoveStep(int _newStep)
+        { 
+            _step = _newStep;
+            //throw new NotImplementedException();
+            return "OK";
+        }
+
         public string TestConnection()
         {
             Console.WriteLine("Тестирование соединения");
+
+
+
             return "OK";
         }
     }

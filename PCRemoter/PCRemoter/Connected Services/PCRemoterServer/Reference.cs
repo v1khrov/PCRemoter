@@ -44,6 +44,11 @@ namespace PCRemoter.PCRemoterServer {
         System.IAsyncResult BeginSendTextToWindow(string _text, System.AsyncCallback callback, object asyncState);
         
         string EndSendTextToWindow(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IRemoterService/SetMouseMoveStep", ReplyAction="http://tempuri.org/IRemoterService/SetMouseMoveStepResponse")]
+        System.IAsyncResult BeginSetMouseMoveStep(int _newStep, System.AsyncCallback callback, object asyncState);
+        
+        string EndSetMouseMoveStep(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -147,6 +152,25 @@ namespace PCRemoter.PCRemoterServer {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class SetMouseMoveStepCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public SetMouseMoveStepCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class RemoterServiceClient : System.ServiceModel.ClientBase<PCRemoter.PCRemoterServer.IRemoterService>, PCRemoter.PCRemoterServer.IRemoterService {
         
         private BeginOperationDelegate onBeginDoWorkDelegate;
@@ -184,6 +208,12 @@ namespace PCRemoter.PCRemoterServer {
         private EndOperationDelegate onEndSendTextToWindowDelegate;
         
         private System.Threading.SendOrPostCallback onSendTextToWindowCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginSetMouseMoveStepDelegate;
+        
+        private EndOperationDelegate onEndSetMouseMoveStepDelegate;
+        
+        private System.Threading.SendOrPostCallback onSetMouseMoveStepCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -250,6 +280,8 @@ namespace PCRemoter.PCRemoterServer {
         public event System.EventHandler<ControlsCompletedEventArgs> ControlsCompleted;
         
         public event System.EventHandler<SendTextToWindowCompletedEventArgs> SendTextToWindowCompleted;
+        
+        public event System.EventHandler<SetMouseMoveStepCompletedEventArgs> SetMouseMoveStepCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -524,6 +556,52 @@ namespace PCRemoter.PCRemoterServer {
                         _text}, this.onEndSendTextToWindowDelegate, this.onSendTextToWindowCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult PCRemoter.PCRemoterServer.IRemoterService.BeginSetMouseMoveStep(int _newStep, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSetMouseMoveStep(_newStep, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string PCRemoter.PCRemoterServer.IRemoterService.EndSetMouseMoveStep(System.IAsyncResult result) {
+            return base.Channel.EndSetMouseMoveStep(result);
+        }
+        
+        private System.IAsyncResult OnBeginSetMouseMoveStep(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int _newStep = ((int)(inValues[0]));
+            return ((PCRemoter.PCRemoterServer.IRemoterService)(this)).BeginSetMouseMoveStep(_newStep, callback, asyncState);
+        }
+        
+        private object[] OnEndSetMouseMoveStep(System.IAsyncResult result) {
+            string retVal = ((PCRemoter.PCRemoterServer.IRemoterService)(this)).EndSetMouseMoveStep(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnSetMouseMoveStepCompleted(object state) {
+            if ((this.SetMouseMoveStepCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.SetMouseMoveStepCompleted(this, new SetMouseMoveStepCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void SetMouseMoveStepAsync(int _newStep) {
+            this.SetMouseMoveStepAsync(_newStep, null);
+        }
+        
+        public void SetMouseMoveStepAsync(int _newStep, object userState) {
+            if ((this.onBeginSetMouseMoveStepDelegate == null)) {
+                this.onBeginSetMouseMoveStepDelegate = new BeginOperationDelegate(this.OnBeginSetMouseMoveStep);
+            }
+            if ((this.onEndSetMouseMoveStepDelegate == null)) {
+                this.onEndSetMouseMoveStepDelegate = new EndOperationDelegate(this.OnEndSetMouseMoveStep);
+            }
+            if ((this.onSetMouseMoveStepCompletedDelegate == null)) {
+                this.onSetMouseMoveStepCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSetMouseMoveStepCompleted);
+            }
+            base.InvokeAsync(this.onBeginSetMouseMoveStepDelegate, new object[] {
+                        _newStep}, this.onEndSetMouseMoveStepDelegate, this.onSetMouseMoveStepCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -699,6 +777,19 @@ namespace PCRemoter.PCRemoterServer {
             public string EndSendTextToWindow(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 string _result = ((string)(base.EndInvoke("SendTextToWindow", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginSetMouseMoveStep(int _newStep, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = _newStep;
+                System.IAsyncResult _result = base.BeginInvoke("SetMouseMoveStep", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndSetMouseMoveStep(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("SetMouseMoveStep", _args, result)));
                 return _result;
             }
         }

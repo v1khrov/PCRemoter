@@ -142,6 +142,9 @@
   <data name="LeftClickText" xml:space="preserve">
     <value>Левый клик</value>
   </data>
+  <data name="MouseMoveStepLabel" xml:space="preserve">
+    <value>Шаг движения курсора мыши</value>
+  </data>
   <data name="PortLabel" xml:space="preserve">
     <value>Порт</value>
   </data>
@@ -156,6 +159,9 @@
   </data>
   <data name="SettingsPageTitle" xml:space="preserve">
     <value>Настройки</value>
+  </data>
+  <data name="SettingsSectionTitle" xml:space="preserve">
+    <value>Параметры</value>
   </data>
   <data name="StatusConnectingLabel" xml:space="preserve">
     <value>Соединение...</value>

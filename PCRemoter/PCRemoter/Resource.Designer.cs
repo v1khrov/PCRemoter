@@ -134,6 +134,15 @@ namespace PCRemoter {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Mouse Move Step.
+        /// </summary>
+        internal static string MouseMoveStepLabel {
+            get {
+                return ResourceManager.GetString("MouseMoveStepLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Port.
         /// </summary>
         internal static string PortLabel {
@@ -175,6 +184,15 @@ namespace PCRemoter {
         internal static string SettingsPageTitle {
             get {
                 return ResourceManager.GetString("SettingsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Parametres.
+        /// </summary>
+        internal static string SettingsSectionTitle {
+            get {
+                return ResourceManager.GetString("SettingsSectionTitle", resourceCulture);
             }
         }
         

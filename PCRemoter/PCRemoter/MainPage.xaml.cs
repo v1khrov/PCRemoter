@@ -40,6 +40,13 @@ namespace PCRemoter.PCRemoterServer
                 Channel.EndSendTextToWindow, someText, null);
         }
 
+        public async Task<string> SetMouseMoveStep(int _newStep)
+        {
+            return await Task.Factory.FromAsync<int,string>(
+                Channel.BeginSetMouseMoveStep,
+                Channel.EndSetMouseMoveStep, _newStep, null);                
+        }
+
     }
 }
 
@@ -81,6 +88,8 @@ namespace PCRemoter
             winscreenBtn.Text = Resource.ButtonScreenshotText;
             settingsPage.Title = Resource.SettingsPageTitle;
             testingSection.Title = Resource.TestingSectionTitle;
+            settingsSection.Title = Resource.SettingsSectionTitle;
+            labelSetStepMouse.Text = Resource.MouseMoveStepLabel;
 
         }
 
@@ -112,12 +121,7 @@ namespace PCRemoter
 
         }
 
-        private async void OnButtonLoadLastClicked(object sender, EventArgs e)
-        {
-            //LoadFromFile(labelPCAddress.Text);
-        }
-
-        
+              
         
         async void OnButtonEchoClicked(object sender, EventArgs e)
         {
@@ -139,16 +143,6 @@ namespace PCRemoter
 
         //-----------------------СТРАНИЦА УПРАВЛЕНИЕ ПК---------------------------------
         
-        async void OnSettingsButtonClicked(object sender, EventArgs e)
-        {
-
-        }
-
-        async void picker_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
         //отправка введенного текста в приложение на ПК
         async void OnSendTextClicked(object sender, EventArgs e)
         {
@@ -208,6 +202,30 @@ namespace PCRemoter
             if (sender == winscreenBtn)
                 _buttonName = "buttonScreenshot";
 
+            if (sender == mouseDBtn)
+                _buttonName = "mouseDown";
+
+            if (sender == mouseDLBtn)
+                _buttonName = "mouseDownLeft";
+
+            if (sender == mouseDRBtn)
+                _buttonName = "mouseDownRight";
+
+            if (sender == mouseLBtn)
+                _buttonName = "mouseLeft";
+
+            if (sender == mouseRBtn)
+                _buttonName = "mouseRight";
+
+            if (sender == mouseUBtn)
+                _buttonName = "mouseUp";
+
+            if (sender == mouseULBtn)
+                _buttonName = "mouseUpLeft";
+             
+            if (sender == mouseURBtn)
+                _buttonName = "mouseUpRight";
+
             controlAnswer = await client.Controls(_buttonName);
         }
 
@@ -254,8 +272,12 @@ namespace PCRemoter
             await DependencyService.Get<IFileWorker>().DeleteAsync(filename);          
             
         }
-        
 
+        private async void stepperSetStepMouse_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            labelSetStepMouse.Text = String.Format(Resource.MouseMoveStepLabel + " {0}", e.NewValue);//Resource.MouseMoveStepLabel
+            await client.SetMouseMoveStep((int)e.NewValue);
+        }
     }
 }
 

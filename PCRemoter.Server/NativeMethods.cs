@@ -15,6 +15,12 @@ namespace PCRemoter.Server
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern bool SetCursorPos(int X, int Y);
+
         static int GetWParamFromButton(MouseButton btn)
         {
             switch (btn)
@@ -130,6 +136,14 @@ namespace PCRemoter.Server
         Left = 0x201, // WM_LBUTTONDOWN
         Right = 0x204, // WM_RBUTTONDOWN
         Middle = 0x207 // WM_MBUTTONDOWN
+    }
+
+    public enum MouseEvent
+    {
+        MOUSEEVENTF_LEFTDOWN = 0x02,
+        MOUSEEVENTF_LEFTUP = 0x04,
+        MOUSEEVENTF_RIGHTDOWN = 0x08,
+        MOUSEEVENTF_RIGHTUP = 0x10,
     }
 
 }

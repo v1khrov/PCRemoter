@@ -28,5 +28,8 @@ namespace PCRemoter.Server
 
         [OperationContract]
         string SendTextToWindow(string _text);
+
+        [OperationContract]
+        string SetMouseMoveStep(int _newStep);
     }
 }

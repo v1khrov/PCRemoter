@@ -88,21 +88,21 @@
                 <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  x:Name="inputText" />
                 <Button Grid.Column="3" Grid.Row="0" x:Name="sendBtn" Clicked="OnSendTextClicked" />
                 <!--<BoxView Color="Gray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="3"/>-->
-                <Button Text="MouseUpLeft" BackgroundColor="Silver" FontSize="Default" Grid.Row="1" Grid.Column="0" 
+                <Button Text="MouseUpLeft" BackgroundColor="Navy" TextColor="White" FontSize="Default" Grid.Row="1" Grid.Column="0" 
 			x:Name="mouseULBtn" Clicked="OnControlClicked"/>
-                <Button Text="MouseUp" BackgroundColor="Silver" FontSize="Default" Grid.Row="1" Grid.Column="1" 
+                <Button Text="MouseUp" BackgroundColor="Navy" TextColor="White" FontSize="Default" Grid.Row="1" Grid.Column="1" 
 			Grid.ColumnSpan="2" x:Name="mouseUBtn" Clicked="OnControlClicked"/>
-                <Button Text="MouseUpRight" BackgroundColor="Silver" FontSize="Default" Grid.Row="1" Grid.Column="3" 
+                <Button Text="MouseUpRight" BackgroundColor="Navy" TextColor="White" FontSize="Default" Grid.Row="1" Grid.Column="3" 
 			x:Name="mouseURBtn" Clicked="OnControlClicked"/>
-                <Button Text="MouseLeft" BackgroundColor="Silver" FontSize="Default" Grid.Row="2" Grid.Column="0" 
+                <Button Text="MouseLeft" BackgroundColor="Navy" TextColor="White" FontSize="Default" Grid.Row="2" Grid.Column="0" 
 			Grid.ColumnSpan="2" x:Name="mouseLBtn" Clicked="OnControlClicked"/>
-                <Button Text="MouseRight" BackgroundColor="Silver" FontSize="Default" Grid.Row="2" Grid.Column="2" 
+                <Button Text="MouseRight" BackgroundColor="Navy" TextColor="White" FontSize="Default" Grid.Row="2" Grid.Column="2" 
 			Grid.ColumnSpan="2" x:Name="mouseRBtn" Clicked="OnControlClicked"/>
-                <Button Text="MouseDownLeft" BackgroundColor="Silver" FontSize="Default" Grid.Row="3" Grid.Column="0" 
+                <Button Text="MouseDownLeft" BackgroundColor="Navy" TextColor="White" FontSize="Default" Grid.Row="3" Grid.Column="0" 
 			x:Name="mouseDLBtn" Clicked="OnControlClicked"/>
-                <Button Text="MouseDown" BackgroundColor="Silver" FontSize="Default" Grid.Row="3" Grid.Column="1" 
+                <Button Text="MouseDown" BackgroundColor="Navy" TextColor="White" FontSize="Default" Grid.Row="3" Grid.Column="1" 
 			Grid.ColumnSpan="2" x:Name="mouseDBtn" Clicked="OnControlClicked"/>
-                <Button Text="MouseDownRight" BackgroundColor="Silver" FontSize="Default" Grid.Row="3" Grid.Column="3" 
+                <Button Text="MouseDownRight" BackgroundColor="Navy" TextColor="White" FontSize="Default" Grid.Row="3" Grid.Column="3" 
 			x:Name="mouseDRBtn" Clicked="OnControlClicked"/>
                 <Button BackgroundColor="Silver" FontSize="Default" Grid.Row="4" Grid.Column="0" 
 			Grid.ColumnSpan="2" x:Name="leftClckBtn" Clicked="OnControlClicked"/>
@@ -158,6 +158,15 @@
                             <EntryCell Label="Answer" LabelColor="Gray" x:Name="labelAnswer" Text="" Keyboard="Default"/>
                             <ViewCell>
                                 <Button Text="Echo test" FontSize="Large" x:Name="buttonEcho" HorizontalOptions="CenterAndExpand" Clicked="OnButtonEchoClicked"/>
+                            </ViewCell>
+                        </TableSection>
+                        <TableSection x:Name="settingsSection" Title="Settings">
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label x:Name="labelSetStepMouse" TextColor="Gray" Text="Set step moving mouse" FontSize="Default" HorizontalOptions="Start"/>
+                                    <Stepper x:Name="stepperSetStepMouse" Minimum="0" Increment="1" Maximum="20"  Value="7" ValueChanged="stepperSetStepMouse_ValueChanged" HorizontalOptions="EndAndExpand" />
+                                    <Label Text=" "/>
+                                </StackLayout>
                             </ViewCell>
                         </TableSection>
                     </TableRoot>

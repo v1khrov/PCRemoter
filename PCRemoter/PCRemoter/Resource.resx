@@ -142,6 +142,9 @@
   <data name="LeftClickText" xml:space="preserve">
     <value>Left Click</value>
   </data>
+  <data name="MouseMoveStepLabel" xml:space="preserve">
+    <value>Mouse Move Step</value>
+  </data>
   <data name="PortLabel" xml:space="preserve">
     <value>Port</value>
   </data>
@@ -156,6 +159,9 @@
   </data>
   <data name="SettingsPageTitle" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="SettingsSectionTitle" xml:space="preserve">
+    <value>Parametres</value>
   </data>
   <data name="StatusConnectingLabel" xml:space="preserve">
     <value>Connecting to service...</value>

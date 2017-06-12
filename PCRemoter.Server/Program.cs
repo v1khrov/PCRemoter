@@ -34,7 +34,7 @@ namespace PCRemoter.Server
 
             //хост службы
             ServiceHost hostRemoter = new ServiceHost(typeof(RemoterService), address);
-
+                        
             try
             {
                 // добавление конечной точки (веб-службы)
