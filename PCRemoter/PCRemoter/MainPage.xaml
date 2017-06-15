@@ -4,12 +4,7 @@
              xmlns:local="clr-namespace:PCRemoter"
              x:Class="PCRemoter.MainPage">
 
-    <!--<TabbedPage.Children>
-        <local:ConnectionPage />
-        <local:PCControlsPage />
-        <local:SettingsPage />
-    </TabbedPage.Children>-->
-
+   
     <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PCRemoter"
@@ -35,16 +30,13 @@
                 <TableView.Root>
                     <TableRoot>
                         <TableSection x:Name="tableConnectionSection">
-                            <!--<EntryCell Label="PC Address" LabelColor="Gray" x:Name="labelPCAddress" Text="http://192.168.0.95:5051/RemoterService" Keyboard="Url"/>-->
                             <EntryCell LabelColor="Gray" Text="192.168.0.95" x:Name="ipAddress" Keyboard="Url"/>
                             <EntryCell LabelColor="Gray" Text="5051" x:Name="portAddress" Keyboard="Url"/>
                             <SwitchCell x:Name="saveSwitch" On="True" />
                             <ViewCell>
                                 <Button  FontSize="Large" x:Name="buttonConnect" HorizontalOptions="CenterAndExpand" Clicked="OnButtonConnectClicked"/>
                             </ViewCell>
-                            <!--<ViewCell>
-                                <Button Text="Load last address" FontSize="Default" x:Name="buttonLoadLast" HorizontalOptions="CenterAndExpand" Clicked="OnButtonLoadLastClicked"/>
-                            </ViewCell>-->
+                            
                             
                             <ViewCell>
                                 <Label x:Name="labelConnectMsg" FontSize="Default" HorizontalOptions="CenterAndExpand"  />
@@ -87,7 +79,6 @@
                 
                 <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  x:Name="inputText" />
                 <Button Grid.Column="3" Grid.Row="0" x:Name="sendBtn" Clicked="OnSendTextClicked" />
-                <!--<BoxView Color="Gray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="3"/>-->
                 <Button Text="MouseUpLeft" BackgroundColor="Navy" TextColor="White" FontSize="Default" Grid.Row="1" Grid.Column="0" 
 			x:Name="mouseULBtn" Clicked="OnControlClicked"/>
                 <Button Text="MouseUp" BackgroundColor="Navy" TextColor="White" FontSize="Default" Grid.Row="1" Grid.Column="1" 

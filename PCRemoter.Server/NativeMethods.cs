@@ -14,10 +14,12 @@ namespace PCRemoter.Server
     {
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-
+        
+        //Инициализация события "мыши"
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
 
+        //Получение текущего положения курсора мыши на экране
         [DllImport("user32.dll", SetLastError = true)]
         public static extern bool SetCursorPos(int X, int Y);
 

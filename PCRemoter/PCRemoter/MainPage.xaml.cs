@@ -22,8 +22,12 @@ namespace PCRemoter.PCRemoterServer
         public async Task<string> Echo(string message)
         {
             return await Task.Factory.FromAsync<string, string>(
+                //вызов begin-метода
                 Channel.BeginEcho,
-                Channel.EndEcho, message, null);
+                //вызов end-метода
+                Channel.EndEcho, 
+                //аргумент, с которым вызывается метод
+                message, null);
         }
 
         public async Task<string> Controls(string buttonName)
@@ -62,12 +66,12 @@ namespace PCRemoter
     }
 
     public partial class MainPage : TabbedPage
-    {        
+    {
+        //создание экземпляра клиента
         public RemoterServiceClient client;
         string testAnswer = "";//ответ об успешности соединения
-        string connectIPAddress = "http://192.168.0.37:5051/PCRemoterService";//"http://172.20.10.3:5051/PCRemoterService";/*http://192.168.0.95:5051/PCRemoterService*/ //введенный пользователем адрес хоста 
-        string echoAnswer = "";//ответ от службы
-       
+        string connectIPAddress = "http://192.168.0.37:5051/PCRemoterService";//введенный пользователем адрес хоста 
+        string echoAnswer = "";//ответ от службы       
         string controlAnswer = "";
         public MainPage()
         {            
@@ -93,10 +97,13 @@ namespace PCRemoter
 
         }
 
+        //Обработчик нажатия кнопки "Подключиться"
         private async void OnButtonConnectClicked(object sender, EventArgs e)
         {
-            //connectIPAddress = labelPCAddress.Text;
-            string endpointAddress = /*labelPCAddress.Text;*/"http://" + ipAddress.Text + ":" + portAddress.Text + "/RemoterService";
+            //Считывания адреса и порта введенных пользователем
+            string endpointAddress = "http://" + ipAddress.Text + ":" + portAddress.Text + "/RemoterService";
+
+            //Инициализация клиента веб-службы
             client = new RemoterServiceClient(RemoterServiceClient.EndpointConfiguration.NetHttpBinding_IRemoterService, endpointAddress);
 
             //проверка соединения
@@ -104,12 +111,15 @@ namespace PCRemoter
 
             try
             {
+                //Вызов метода тестирования соединения
                 testAnswer = await client.TestConnection();
+                //Проверка ответа от службы на успех
                 if (!string.Equals(testAnswer, "OK", StringComparison.CurrentCultureIgnoreCase))
                 {
                     throw new Exception("Host not found!");
 
                 }
+                //Вывод сообщения об успехе на экран
                 labelConnectMsg.Text = Resource.StatusSuccessLabel;
                 Save();                
             }
@@ -117,7 +127,7 @@ namespace PCRemoter
             {
                 labelConnectMsg.Text = Resource.StatusFailLabel + ex.Message;
                 await DisplayAlert("Error!", "Connecting failed! " + ex.Message, "ОK");
-             }
+            }
 
         }
 

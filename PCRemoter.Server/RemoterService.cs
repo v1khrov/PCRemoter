@@ -53,20 +53,16 @@ namespace PCRemoter.Server
                     Cursor.Position = new Point(currPosition.X + _step, currPosition.Y - _step);
                     break;
                 case "clickLeft":
-                    {
-                        //MouseEventArgs _mouseEA = new MouseEventArgs(MouseButtons.Right, 1, currPosition.X, currPosition.Y, 0);
-                        //Control _ctrl = new Control();
-                        //_ctrl.MouseClick(_mouseEA);
-                        NativeMethods.SetCursorPos(currPosition.X, currPosition.Y);
+                    {                       
+                        NativeMethods.SetCursorPos(currPosition.X, currPosition.Y); //Установка текущего положения курсора на экране
+                        //Имитация нажатия левой клавиши мыши
                         NativeMethods.mouse_event((int)MouseEvent.MOUSEEVENTF_LEFTDOWN, currPosition.X, currPosition.Y, 0, 0);
+                        //Отпускание левой клавиши мыши
                         NativeMethods.mouse_event((int)MouseEvent.MOUSEEVENTF_LEFTUP, currPosition.X, currPosition.Y, 0, 0);
                     }
                     break;
                 case "clickRight":
-                    {
-                        //MouseEventArgs _mouseEA = new MouseEventArgs(MouseButtons.Right, 1, currPosition.X, currPosition.Y, 0);
-                        //Control _ctrl = new Control();
-                        //_ctrl.MouseClick(_mouseEA);
+                    {                        
                         NativeMethods.SetCursorPos(currPosition.X, currPosition.Y);
                         NativeMethods.mouse_event((int)MouseEvent.MOUSEEVENTF_RIGHTDOWN, currPosition.X, currPosition.Y, 0, 0);
                         NativeMethods.mouse_event((int)MouseEvent.MOUSEEVENTF_RIGHTUP, currPosition.X, currPosition.Y, 0, 0);
@@ -140,7 +136,7 @@ namespace PCRemoter.Server
 
         public string SendTextToWindow(string _text)
         {
-            Console.WriteLine("Вызов метода \"SendTextToWindow\"");            
+            Console.WriteLine("Вызов метода \"SendTextToWindow\"");          
             
             SendKeys.SendWait(_text);
             return "OK";                      
@@ -149,17 +145,13 @@ namespace PCRemoter.Server
 
         public string SetMouseMoveStep(int _newStep)
         { 
-            _step = _newStep;
-            //throw new NotImplementedException();
+            _step = _newStep;            
             return "OK";
         }
 
         public string TestConnection()
         {
             Console.WriteLine("Тестирование соединения");
-
-
-
             return "OK";
         }
     }

@@ -17,18 +17,23 @@ namespace PCRemoter.Server
         [OperationContract]
         string Hello();
 
+        //Тестирование соединение с отправкой сообщения клиента клиенту
         [OperationContract]
         string Echo(string _message);
 
+        //Тестирование соединения
         [OperationContract]
         string TestConnection();
 
+        //Имитация органов управления ОС Windows (нажатий кнопок, движений мыши)
         [OperationContract]
         string Controls(string _buttonName);
 
+        //Отправка строки (группы символов) в ОС Windows
         [OperationContract]
         string SendTextToWindow(string _text);
-
+        
+        //Установка шага движения курсора мыши
         [OperationContract]
         string SetMouseMoveStep(int _newStep);
     }
