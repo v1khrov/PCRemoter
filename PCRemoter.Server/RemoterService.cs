@@ -14,7 +14,7 @@ namespace PCRemoter.Server
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RemoterService" in both code and config file together.
     public class RemoterService : IRemoterService
     {
-        int _step = 7;
+        int _step = 30;
 
         public string Controls(string _buttonName)
         {

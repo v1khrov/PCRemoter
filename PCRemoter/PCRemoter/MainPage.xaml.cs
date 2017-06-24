@@ -131,8 +131,20 @@ namespace PCRemoter
 
         }
 
-              
-        
+        private void buttonLastAddr1_Clicked(object sender, EventArgs e)
+        {
+            if (sender == buttonLastAddr1)
+                ipAddress.Text = buttonLastAddr1.Text;
+
+            if (sender == buttonLastAddr2)
+                ipAddress.Text = buttonLastAddr2.Text;
+
+            if (sender == buttonLastAddr3)
+                ipAddress.Text = buttonLastAddr3.Text;
+        }
+
+
+
         async void OnButtonEchoClicked(object sender, EventArgs e)
         {
             try

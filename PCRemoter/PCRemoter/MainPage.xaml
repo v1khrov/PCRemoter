@@ -42,12 +42,17 @@
                                 <Label x:Name="labelConnectMsg" FontSize="Default" HorizontalOptions="CenterAndExpand"  />
                             </ViewCell>
                         </TableSection>
-                        <!--
-                        <TableSection x:Name="tableLastAddrSection">
-                            <StackLayout Orientation="Horizontal">
-                                
-                            </StackLayout>
-                        </TableSection>-->
+                        <TableSection x:Name="tableLastAddrSection" Title="Последние адреса:">
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                    <Button x:Name="buttonLastAddr1" Clicked="buttonLastAddr1_Clicked" Text="192.168.0.95"/>
+                                    <Button x:Name="buttonLastAddr2" Clicked="buttonLastAddr1_Clicked" Text="192.168.0.37"/>
+                                    <Button x:Name="buttonLastAddr3" Clicked="buttonLastAddr1_Clicked" Text="192.168.137.1"/>
+
+                                </StackLayout>
+                            </ViewCell>
+
+                        </TableSection>
                     </TableRoot>
                 </TableView.Root>
             </TableView>
@@ -160,7 +165,7 @@
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal">
                                     <Label x:Name="labelSetStepMouse" TextColor="Gray" Text="Set step moving mouse" FontSize="Default" HorizontalOptions="Start"/>
-                                    <Stepper x:Name="stepperSetStepMouse" Minimum="0" Increment="1" Maximum="20"  Value="7" ValueChanged="stepperSetStepMouse_ValueChanged" HorizontalOptions="EndAndExpand" />
+                                    <Stepper x:Name="stepperSetStepMouse" Minimum="0" Increment="2" Maximum="200"  Value="30" ValueChanged="stepperSetStepMouse_ValueChanged" HorizontalOptions="EndAndExpand" />
                                     <Label Text=" "/>
                                 </StackLayout>
                             </ViewCell>
